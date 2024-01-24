@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import movies from "../movies";
+
 import { useParams, Link, useLocation } from "react-router-dom";
 import moment from "moment";
 function Ticket() {
@@ -13,10 +13,8 @@ function Ticket() {
   const mvedata = location.state.data;
   const title = location.state.title;
   const mail = location.state.mail;
-  
-  const obj = movies.find(function (num) {
-    return num.title === title;
-  });
+  const city = location.state.city;
+  const year = location.state.year;
 
   var days = [
     {
@@ -46,14 +44,13 @@ function Ticket() {
   var costs = [{ cost: "200" }, { cost: "150" }, { cost: "100" }];
 
   const [movie, setmovieData] = useState([]);
-  const [tmdata, setmdata] = useState([]);
+
   const [cost, setCost] = useState(null);
   const [found, setNotFound] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [crew, setCrew] = useState(null);
+
   const [activebutton, setactive] = useState(null);
   const [activeb, setactiveb] = useState(null);
-  const [trailer, settrailer] = useState(null);
 
   function handlecost(data) {
     setCost(data);
@@ -67,7 +64,7 @@ function Ticket() {
 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?t=${obj.title}&y=${obj.year}&apikey=961ea94b`
+      `https://www.omdbapi.com/?t=${title}&y=${year}&plot=full&apikey=961ea94b`
     )
       .then((res) => res.json())
       .then((data) => setmovieData(data))
@@ -97,7 +94,7 @@ function Ticket() {
   if (credits !== null) {
     credit = credits.slice(0, 6);
   }
-
+  var num = 0;
   if (movie.imdbVotes !== undefined) {
     for (var i = 0; i < movie.imdbVotes.length; i++) {
       if (movie.imdbVotes[i] !== ",") {
@@ -108,16 +105,20 @@ function Ticket() {
 
   var num3 = parseInt(mvedata.vote_average);
   var imdb = movie.imdbRating === "N/A" ? num3 : movie.imdbRating;
-  var num = 0;
+
   var num1 = parseInt(num);
   num1 = num1 / 1000;
   num1 = Math.floor(num1);
   var t = parseInt(movie.Runtime);
   var h = Math.floor(t / 60);
   var min = Math.floor(t % 60);
+  var plot =
+    movie.Plot?.length > mvedata.overview?.length
+      ? movie.Plot
+      : mvedata.overview;
 
-  var vote = movie.imdbRating === "N/A" ? mvedata.vote_count : num1;
-  
+  var votes = num1 === 0 ? mvedata.vote_count : num1;
+ 
   return (
     <>
       <div className="movie">
@@ -142,7 +143,7 @@ function Ticket() {
               </h2>
             </span>
             <span>
-              <strong>{vote}k</strong> votes
+              <strong>{votes}k</strong> votes
             </span>
           </div>
 
@@ -216,6 +217,7 @@ function Ticket() {
                 photo: mvedata.poster_path,
                 title: title,
                 mail: mail,
+                city: city,
               }}
               to="booking"
             >
@@ -231,7 +233,7 @@ function Ticket() {
         <h4>
           <strong>About the Movie</strong>
         </h4>
-        <p>{mvedata.overview}</p>
+        <p>{plot}</p>
       </div>
       <div className="plot">
         <h4>
@@ -242,17 +244,21 @@ function Ticket() {
             credit.map((c) => (
               <div>
                 <div className="carouselItem">
-                  <img
-                    className="cast-img"
-                    src={
-                      c.profile_path
-                        ? `${img_300}/${c.profile_path}`
-                        : noPicture
-                    }
-                    alt={c?.name}
-                    height="150"
-                    width="150"
-                  />
+                  <a
+                    href={`https://en.wikipedia.org/wiki/${c?.name}`}
+                    target="_blank"
+                  >
+                    <img
+                      className="cast-img"
+                      src={
+                        c.profile_path
+                          ? `${img_300}/${c.profile_path}`
+                          : `https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg`
+                      }
+                      height="150"
+                      width="150"
+                    />
+                  </a>
                 </div>
                 <div>
                   <p className="carouselItem__txt">{c?.name}</p>

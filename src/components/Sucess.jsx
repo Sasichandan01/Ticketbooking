@@ -14,11 +14,13 @@ function Sucess() {
   const app = location.state.payoption;
   const photo = location.state.photo;
   const mail = location.state.mail;
+  const city = location.state.city;
+  const number = location.state.number;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+ 
   return (
     <>
       <div className="success">
@@ -28,7 +30,7 @@ function Sucess() {
               className="success-image"
               src={`https://image.tmdb.org/t/p/w500/` + photo}
             />
-            <figcaption>Tickets are Booked</figcaption>
+            <figcaption>Booking id: &nbsp;&nbsp; #a8i6h9 </figcaption>
           </figure>
         </div>
 
@@ -46,6 +48,10 @@ function Sucess() {
           <div className="success-details">
             <p>Payment through:</p>
             <p> {app}</p>
+          </div>
+          <div className="success-details">
+            <p>Mobile Number:</p>
+            <p>{number}</p>
           </div>
           <div className="success-details">
             <p>Booking id:</p>
@@ -80,7 +86,10 @@ function Sucess() {
       </div>
 
       <div className="success-feedback">
-        <Link state={{ name: name }} to="/">
+        <Link
+          state={{ name: name, city: city, mail: mail }}
+          to={`/${city}/movie`}
+        >
           <button className="btn btn-primary  ">
             <i className="fa-solid fa-house"></i>
           </button>

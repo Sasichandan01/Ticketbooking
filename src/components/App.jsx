@@ -20,7 +20,6 @@ function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/:cityname" element={<Nav />}>
           <Route path="movie" element={<Home />}></Route>
-
           <Route path="movie/:userId" element={<Ticket />}></Route>
           <Route path="movie/:movie/booking" element={<Booking />}></Route>
           <Route path="movie/:movie/booking/payment" element={<Payment />}></Route>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  MDBBtn,
   MDBModal,
   MDBModalDialog,
   MDBModalContent,
@@ -13,7 +12,6 @@ import { Tooltip } from "react-tooltip";
 import Nav from "./Nav";
 
 export default function About() {
-
   const [centredModal, setCentredModal] = useState(false);
   const [centredModal1, setCentredModal1] = useState(false);
   const [centredModal2, setCentredModal2] = useState(false);
@@ -46,8 +44,8 @@ export default function About() {
               <MDBModalBody>
                 <p>
                   This is the <strong>front-end</strong> website created for
-                  booking movie tickets. Payement page is a
-                  <strong> static page</strong>. It does not store old data. If
+                  booking movie tickets. Payment page is a
+                  <strong> static page</strong>.You dont need any money. It does not store old data. If
                   you cannot find an option to move to the next page, please
                   ensure that you have selected all the necessary data on the
                   current page. Once you have selected the required information,
@@ -117,7 +115,7 @@ export default function About() {
               <MDBModalBody>
                 <div className="about-div">
                   <p>Created By : </p>
-                  <p>Bhargav Sasi Chandan</p>
+                  <p>Bhargav Sasi Chandan Arvapalli</p>
                 </div>
                 <div className="about-div">
                   <p>Linkedin:</p>
@@ -125,22 +123,13 @@ export default function About() {
                     target="_blank"
                     href="https://www.linkedin.com/in/bhargav-sasi-chandan-67575a249/"
                   >
-                    Link
+                    <i class="fa-solid fa-link"></i>
                   </a>
                 </div>
                 <div className="about-div">
                   <p>GitHub :</p>
                   <a target="_blank" href="https://github.com/Sasichandan01">
-                   Link
-                  </a>
-                </div>
-                <div className="about-div">
-                  <p>Resume:</p>
-                  <a
-                    target="_blank"
-                    href="https://www.linkedin.com/in/bhargav-sasi-chandan-67575a249/"
-                  >
-                    Link
+                    <i class="fa-solid fa-link"></i>
                   </a>
                 </div>
               </MDBModalBody>

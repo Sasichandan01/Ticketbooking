@@ -4,21 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Movie(props) {
-
   const [found, setNotFound] = useState(null);
-  const [tmdata, setmdata] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${props.title}&api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
-    )
-      .then((res) => res.json())
-      .then((data) => setmdata(data.results[0]))
-
-      .catch((err) => {
-        setNotFound(true);
-      });
-  }, []);
+  
 
   useEffect(() => {
     AOS.init({
@@ -29,20 +16,22 @@ function Movie(props) {
   }, []);
 
   return (
-    <div data-os="fade-down">
+    <div data-os="fade-up">
       <figure className="image-block">
-        <img src={props.poster} />
+        <img src={`https://image.tmdb.org/t/p/w300/` + props.poster}  width="250" height="300" />
         <figcaption>
           <b>{props.title}</b>
-          <p>{props.genre}</p>
+          <p>Release Date : {props.release}</p>
           <Link
             state={{
               name: props.name,
-              data: tmdata,
+              data: props.tmdata,
               title: props.title,
+              year:props.year,
               mail: props.mail,
+              city: props.city,
             }}
-            to={`${tmdata.id}`}
+            to={`${props.tmdata.id}`}
           >
             <button>Book Now</button>
           </Link>

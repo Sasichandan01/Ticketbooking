@@ -9,7 +9,7 @@ function Feedback() {
   const [text, setText] = useState("Submit");
 
   function handleClick() {
-    setTimeout(1000);
+    
     setText("Thank you " + name);
   }
 
@@ -22,9 +22,9 @@ function Feedback() {
     <>
       <textarea
         className="textarea"
-        rows="10"
-        cols="50"
-        placeholder="Write your feedback"
+        rows="6"
+        cols="40"
+        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Write your feedback"
       />
       <div>
         <form onSubmit={submit}>

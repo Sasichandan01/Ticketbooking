@@ -137,7 +137,7 @@ a {
 
 .data-container {
   background-color: #fff;
-  cursor: pointer;
+
   border-radius: 5px;
   font-size: 14px;
   margin: 0 30px 0 10px;
@@ -146,38 +146,24 @@ a {
   -webkit-appearance: none;
   appearance: none;
 }
-.circle{
-  border:none;
-  background-color:hsl(233, 15%, 24%)
+.data-container Link {
+  color: #4298e7;
 }
-.close{
-  border:none;
-  border-radius: 10px;;
-   color: #4298e7;
+#drop {
+  cursor: pointer;
+  margin-left: 10px;
 }
-.gfg {
-  display: flex;
-  flex-wrap: wrap;
-}
-.gfg-content {
-  display: block;
-  margin: auto;
-}
-.gfg-details {
-  display: flex;
-  flex-wrap: wrap;
-}
-.gfg-details button{
-  border:0.5px;
 
+.circle {
+  border: none;
+  background-color: hsl(233, 15%, 24%);
 }
-@media only screen and (max-width: 1000px) {
+.close {
+  border: none;
+  border-radius: 10px;
+  color: #4298e7;
+}
 
-  .gfg-content img {
-    margin-bottom: 20px;
-  
-  }
-}
 /* City */
 .city-form {
   display: flex;
@@ -287,18 +273,17 @@ a {
   margin-top: 100px;
 }
 
-
-.latestmovies{
- font-family: "Roboto", sans-serif;
+.latestmovies {
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-top:10%;
-  padding-left:100px;
+  padding-top: 10%;
+  padding-left: 100px;
   padding-right: 100px;
 }
-.latestmovies button{
-   border:none;
+.latestmovies button {
+  border: none;
 }
 .moviesss-container {
   position: relative;
@@ -333,12 +318,10 @@ figure:hover {
 figure:hover h1 {
   opacity: 0;
   transform: scale(0.7);
-
 }
 figure:hover img {
   transform: scale(1.025);
-  cursor:pointer;
-
+  cursor: pointer;
 }
 figure:hover figcaption {
   bottom: 0;
@@ -361,7 +344,6 @@ figure img {
   width: 250px;
   height: 300px;
   transition: 0.25s;
-
 }
 figure figcaption {
   position: absolute;
@@ -370,7 +352,7 @@ figure figcaption {
   width: 100%;
   margin: 0;
   padding: 30px;
-  background-color:#1f2533 ;
+  background-color: #1f2533;
 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   color: white;
@@ -402,8 +384,8 @@ figure figcaption button {
 
 .movie-image {
   border-radius: 10px;
-  height:400px;
-  width:400px;
+  height: 400px;
+  width: 400px;
   cursor: pointer;
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.2);
 }
@@ -431,13 +413,13 @@ figure figcaption button {
   margin-top: 100px;
   margin-right: 30px;
   margin-left: 120px;
-  height:400px;
-  width: 400px;;
+  height: 400px;
+  width: 400px;
 }
 @media only screen and (max-width: 850px) {
   .poster {
-    margin-left: 25px;
-    width:280px;
+    
+    margin-left: 20px;
   }
 }
 .matter {
@@ -445,10 +427,16 @@ figure figcaption button {
   margin-top: 100px;
   margin-right: 30px;
 }
+@media only screen and (max-width: 1050px) {
+  .matter {
+    margin-left: 120px;
+    margin-right: 0;
+  }
+}
 @media only screen and (max-width: 850px) {
   .matter {
-    margin-left: 25px;
-    margin-right: 0;;
+    margin-left: 20px;
+    margin-right: 0;
   }
 }
 
@@ -513,7 +501,7 @@ li {
 }
 @media only screen and (max-width: 850px) {
   .plot {
-    margin-left:25px;
+    margin-left: 20px;
   }
 }
 .plot h4 {
@@ -789,13 +777,15 @@ p span {
 }
 @media only screen and (max-width: 850px) {
   #payment {
-   width:auto;
+    width: auto;
   }
 }
 .pay-content {
   margin-left: 20px;
 }
-
+.pay-confirm {
+  display: block;
+}
 .pay-image {
   margin-left: 100px;
   border-radius: 5px;
@@ -843,7 +833,34 @@ hr {
   font-size: medium;
   font-weight: 600;
 }
-
+.gfg {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gfg-content {
+  display: block;
+  margin: auto;
+}
+.gfg-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gfg-details button {
+  border: 0.5px;
+}
+@media only screen and (max-width: 1000px) {
+  .gfg-content img {
+    margin-bottom: 20px;
+  }
+}
+.pay-details {
+  margin: 20px auto;
+}
+.pay-details i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Success page */
 .success {
   display: flex;
@@ -916,7 +933,10 @@ hr {
 
 .textarea {
   display: flex;
+  columns: 50;
   margin: 50px auto;
+  border: 1px solid black;
+  border-radius: 10%;
 }
 #feedback-button {
   margin: 20px auto;
@@ -924,28 +944,26 @@ hr {
 }
 /* About page */
 
-.about{
-  display:flex;
+.about {
+  display: flex;
   flex-wrap: wrap;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   margin: 20% 25%;
   border-radius: 90px 90px 90px 90px;
-  border:1px solid black;
-  padding:20px 10px 20px 10px;
+  border: 1px solid black;
+  padding: 20px 10px 20px 10px;
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.2);
 }
-.about button{
+.about button {
   color: #4298e7;
   background-color: #e4f2ff;
- 
+
   border: none;
   border-radius: 10px;
   font-size: medium;
-
 }
-.about-div{
+.about-div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-

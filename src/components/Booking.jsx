@@ -3,9 +3,9 @@ import { useParams, Link, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import movies from "../movies";
 function Booking(props) {
   const location = useLocation();
+
   const mail = location.state.mail;
   const data = location.state.data;
   const date = location.state.date;
@@ -13,13 +13,17 @@ function Booking(props) {
   const name = location.state.name;
   const photo = location.state.photo;
   const title = location.state.title;
+  const city = location.state.city;
+
   var c = parseInt(cost);
+
   const [count, setCount] = useState([0, false]);
   const [movie, setmovieData] = useState([]);
   const [found, setNotFound] = useState(null);
   const [totalcost, settotalcost] = useState(0);
   const [activeb, setactiveb] = useState(null);
   const time = new Date().getHours();
+
   var timings = [
     { value: "11", name: "11:00 A.M" },
     { value: "14", name: "2:00 P.M" },
@@ -27,12 +31,11 @@ function Booking(props) {
     { value: "20", name: "8:00 P.M" },
     { value: "24", name: "10:00 P.M" },
   ];
-  const obj = movies.find(function (num) {
-    return num.title === title;
-  });
+
+ 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?t=${obj.title}&y=${obj.year}&apikey=961ea94b`
+      `https://www.omdbapi.com/?t=${title}&y=2023&apikey=961ea94b`
     )
       .then((res) => res.json())
       .then((data) => setmovieData(data))
@@ -272,6 +275,7 @@ function Booking(props) {
                 title: title,
                 photo: photo,
                 mail: mail,
+                city: city,
               }}
               to="payment"
             >

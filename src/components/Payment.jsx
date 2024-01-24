@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import {
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+} from "mdb-react-ui-kit";
 
 function Payment() {
+  
   const location = useLocation();
 
   const cost = location.state.totalcost;
@@ -13,9 +23,14 @@ function Payment() {
   const title = location.state.title;
   const photo = location.state.photo;
   const mail = location.state.mail;
+  const city = location.state.city;
 
   const [activeb, setactiveb] = useState(null);
   const [app, setApp] = useState(null);
+  const [centredModal, setCentredModal] = useState(false);
+  const [number, setNumber] = useState();
+  const [tar, settarget] = useState(false);
+  const [centredModal1, setCentredModal1] = useState(false);
 
   var num = cost / count;
   var num1 = cost + 10;
@@ -62,7 +77,6 @@ function Payment() {
           <p>No. of tickets</p>
           <p>{count}</p>
         </div>
-
         <div className="pay-cost">
           <p>Sub Total</p>
 
@@ -149,30 +163,117 @@ function Payment() {
           </button>
         </div>
         {activeb && (
-          <Link
-            state={{
-              totalcost: cost,
-              counts: count,
-              theatre: theater,
-              time: time,
-              date: date,
-              name: name,
-              title: title,
-              photo: photo,
-              payoption: app,
-              mail: mail,
-            }}
-            to="success"
-          >
-            <div className="payconfirm">
-              <button className="payconfirm-button">
-                Pay &nbsp;<i className="fa-solid fa-indian-rupee-sign"></i>
-                &nbsp;
-                {num1}.00
-              </button>
-            </div>
-          </Link>
+          <div className="payconfirm">
+            <button
+              className="payconfirm-button"
+              onClick={() =>
+                setTimeout(() => setCentredModal(!centredModal), 100)
+              }
+            >
+              Pay &nbsp;
+              <i className="fa-solid fa-indian-rupee-sign"></i>
+              &nbsp;
+              {num1}.00
+            </button>
+          </div>
         )}
+        <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
+          <MDBModalDialog top size="md">
+            <MDBModalContent>
+              <MDBModalHeader>
+                <MDBModalTitle></MDBModalTitle>
+              </MDBModalHeader>
+              <MDBModalBody>
+                <div className="gfg">
+                  <div className="gfg-content" id="gfg-content">
+                    <div className="pay-details">
+                      <input
+                        type="number"
+                        placeholder="Enter mobile number"
+                        onChange={(e) => setNumber(e.target.value)}
+                        value={number}
+                      />
+                    </div>
+                    <div className="pay-details">
+                      <input type="checkbox" onClick={() => settarget(!tar)} />
+                      <label> &nbsp;I am not a Robot</label>
+                    </div>
+                  </div>
+                </div>
+              </MDBModalBody>
+              <MDBModalFooter>
+                {tar && number?.length === 10 && (
+                  <div className="payconfirm">
+                    <button
+                      className="payconfirm-button"
+                      onClick={() =>
+                        setTimeout(() => setCentredModal1(!centredModal1), 2000)
+                      }
+                    >
+                      Go....
+                    </button>
+                  </div>
+                )}
+              </MDBModalFooter>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
+
+        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1}>
+          <MDBModalDialog top size="md">
+            <MDBModalContent>
+              <MDBModalHeader>
+                <MDBModalTitle></MDBModalTitle>
+              </MDBModalHeader>
+              <MDBModalBody>
+                <div className="gfg">
+                  <div className="gfg-content" id="gfg-content">
+                    <div className="pay-details">
+                      <i class="fa-solid fa-circle-check fa-3x"></i>
+                    </div>
+                    <div className="pay-details">
+                      <b>Payment is successful happened through {app}</b>
+                      <div className="payconfirm">
+                        <Link
+                          state={{ name: name, city: city, mail: mail }}
+                          to={`/${city}/movie`}
+                        >
+                          <button className="btn btn-primary  ">
+                            <i className="fa-solid fa-house"></i>
+                          </button>
+                        </Link>
+                        {
+                          <Link
+                            state={{
+                              totalcost: cost,
+                              counts: count,
+                              theatre: theater,
+                              time: time,
+                              date: date,
+                              name: name,
+                              title: title,
+                              photo: photo,
+                              payoption: app,
+                              mail: mail,
+                              city: city,
+                              number: number,
+                            }}
+                            to="success"
+                          >
+                            <button className="btn btn-primary  ">
+                              Ticket
+                            </button>
+                          </Link>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </MDBModalBody>
+              <MDBModalFooter></MDBModalFooter>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
       </div>
     </div>
   );

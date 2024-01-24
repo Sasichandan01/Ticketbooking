@@ -35,7 +35,7 @@ export default function Ticket() {
       </div>
       <div className="city-form">
         {city && (
-          <Link state={{ name: name, mail: mail }} to={`/${city}/movie`}>
+          <Link state={{ name: name, mail: mail,city:city }} to={`/${city}/movie`}>
             <button type="button" className="ticket-button">
               Confirm city
             </button>

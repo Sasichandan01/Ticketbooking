@@ -20,7 +20,8 @@ export default function Nav() {
 
   const [centredModal, setCentredModal] = useState(false);
   const toggleShow = () => setCentredModal(!centredModal);
-  
+   const [cityy, setCityy] = useState(false);
+   const toggleShow1 = () => setCityy(!cityy);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark ">
@@ -35,7 +36,7 @@ export default function Nav() {
                 <Link
                   className="nav-link"
                   state={{ name: name, city: city, mail: mail }}
-                  to="/home"
+                  to={`/${city}/movie`}
                 >
                   Home
                 </Link>
@@ -43,7 +44,7 @@ export default function Nav() {
               <li className="nav-item">
                 <Link
                   className="nav-link"
-                  state={{ name: name, mail: mail }}
+                  state={{ name: name, mail: mail, city: city }}
                   to="/about"
                 >
                   About
@@ -55,6 +56,21 @@ export default function Nav() {
           <div className="d-flex align-items-center">
             <div className="data-container">
               <i className="fa-solid fa-location-dot "></i> {city}
+              <a
+                data-tooltip-id="my-tooltip3"
+                data-tooltip-content="Change city"
+                data-tooltip-place="bottom"
+              >
+                {" "}
+                <Link state={{ name: name, mail: mail }} to="/home">
+                  <i
+                    className=" fa-solid fa-caret-down"
+                    id="drop"
+                    onClick={toggleShow1}
+                  ></i>
+                </Link>
+              </a>{" "}
+              <Tooltip id="my-tooltip3" />
             </div>
             <div>
               <a
