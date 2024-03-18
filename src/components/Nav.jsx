@@ -11,19 +11,20 @@ import {
 import { Link, useParams, Outlet, useLocation } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 export default function Nav() {
-
-  const params = useParams();
-  const city = params.cityname;
+  
+ 
   const location = useLocation();
   const name = location.state.name;
   const mail = location.state.mail;
-
+  const city = location.state.city;
   const [centredModal, setCentredModal] = useState(false);
   const toggleShow = () => setCentredModal(!centredModal);
-   const [cityy, setCityy] = useState(false);
-   const toggleShow1 = () => setCityy(!cityy);
+  const [cityy, setCityy] = useState(false);
+  const toggleShow1 = () => setCityy(!cityy);
   return (
     <>
+     
+      
       <nav className="navbar navbar-expand-lg navbar-dark ">
         <div className="container-fluid">
           <div className="navbar-nav">
@@ -66,7 +67,7 @@ export default function Nav() {
                   <i
                     className=" fa-solid fa-caret-down"
                     id="drop"
-                    onClick={toggleShow1}
+                   onDoubleClickCapture={toggleShow1}
                   ></i>
                 </Link>
               </a>{" "}
@@ -82,7 +83,6 @@ export default function Nav() {
                   <img
                     src="	https://media.geeksforgeeks.org/img-practice/user_web-1598433228.svg"
                     height="30"
-                    alt="Black and White Portrait of a Man"
                     loading="lazy"
                   />
                 </button>

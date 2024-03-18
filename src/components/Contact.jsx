@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="mainpage">
-      <div className="page">
+    
         <div className="col-md-4 col-md-offset-4" id="login">
           <section id="inner-wrapper" className="login">
             <h1>Flix Booking</h1>
@@ -61,7 +61,7 @@ function App() {
             </article>
           </section>
         </div>
-      </div>
+   
     </div>
   );
 }

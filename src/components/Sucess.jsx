@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-
+import { Tooltip } from "react-tooltip";
 function Sucess() {
   const location = useLocation();
 
@@ -16,21 +16,28 @@ function Sucess() {
   const mail = location.state.mail;
   const city = location.state.city;
   const number = location.state.number;
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
  
+  const getRan= size => [...Array(size)].map(()=> Math.floor(Math.random()*16).toString(16)).join('');
+  const num=getRan(6);
+  
+  const [centredModal, setCentredModal] = useState(false);
+  const [centredModal1, setCentredModal1] = useState(false);
+  
+  const toggleShow = () => setCentredModal(!centredModal);
+  const toggleShow1 = () => setCentredModal1(!centredModal1);
   return (
     <>
       <div className="success">
-        <div>
+        <div className="success-fig">
           <figure>
             <img
               className="success-image"
               src={`https://image.tmdb.org/t/p/w500/` + photo}
             />
-            <figcaption>Booking id: &nbsp;&nbsp; #a8i6h9 </figcaption>
+            <figcaption>Booking id: &nbsp;&nbsp; #{num} </figcaption>
           </figure>
         </div>
 
@@ -55,7 +62,7 @@ function Sucess() {
           </div>
           <div className="success-details">
             <p>Booking id:</p>
-            <p> #a8i6h9</p>
+            <p> #{num}</p>
           </div>
 
           <div className="success-details">
@@ -86,13 +93,17 @@ function Sucess() {
       </div>
 
       <div className="success-feedback">
-        <Link
-          state={{ name: name, city: city, mail: mail }}
-          to={`/${city}/movie`}
-        >
-          <button className="btn btn-primary  ">
-            <i className="fa-solid fa-house"></i>
-          </button>
+        <Link state={{ name: name, mail: mail }} to="/home">
+          <a
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Home"
+            data-tooltip-place="left"
+          >
+            <button className="btn btn-primary" onClick={toggleShow}>
+              <i className="fa-solid fa-house"></i>
+            </button>
+          </a>
+          <Tooltip id="my-tooltip" />
         </Link>
 
         <Link
@@ -107,12 +118,21 @@ function Sucess() {
             date: date,
             name: name,
             mail: mail,
+            city: city,
+            number: number,
           }}
           to="feedback"
         >
-          <button className="btn btn-primary ">
-            <i className="fa-solid fa-comment"></i>
-          </button>
+          <a
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Feedback"
+            data-tooltip-place="right"
+          >
+            <button className="btn btn-primary" onClick={toggleShow1}>
+              <i className="fa-solid fa-comment"></i>
+            </button>
+          </a>
+          <Tooltip id="my-tooltip" />
         </Link>
       </div>
       <Outlet />

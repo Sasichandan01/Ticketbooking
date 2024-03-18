@@ -4,7 +4,6 @@ import { Tooltip } from "react-tooltip";
 
 import Movie from "./Movie";
 
-
 function Home() {
   const location = useLocation();
   const name = location.state.name;
@@ -14,9 +13,10 @@ function Home() {
   const [movie, setMovie] = useState([]);
   const [found, setNotFound] = useState(null);
   const [datatip, settip] = useState(null);
+
   useEffect(() => {
     fetch(
-      ` https://api.themoviedb.org/3/discover/movie?api_key=bee8ce9f0d5a33ee50837d31a61a64eb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=2023-05-01T00:00:00.000Z&page=1`
+      ` https://api.themoviedb.org/3/discover/movie?api_key=bee8ce9f0d5a33ee50837d31a61a64eb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&release_date.gte=2023-06-01T00:00:00.000Z&page=1`
     )
       .then((res) => res.json())
       .then((data) => setMovie(data.results))
@@ -25,7 +25,7 @@ function Home() {
         setNotFound(true);
       });
   }, []);
-
+  console.log(JSON.stringify(movie));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -50,7 +50,7 @@ function Home() {
     } else if (count === 1) {
       settip("Sort by Title");
     } else {
-      settip("Unsort");
+      settip("Sort by Popularity");
     }
   }
 
@@ -58,7 +58,9 @@ function Home() {
     <>
       <div className="latestmovies">
         <div>
-          <h3>Latest Movies</h3>
+          <h4>
+            <strong>Latest Movies</strong>
+          </h4>
         </div>
         <div>
           <a
@@ -82,7 +84,7 @@ function Home() {
               city={city}
               id={data.id}
               tmdata={data}
-              year="2023"
+              year={data.release_date}
               release={data.release_date}
               title={data.title}
               poster={data.poster_path}

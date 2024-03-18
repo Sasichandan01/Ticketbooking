@@ -5,7 +5,6 @@ import "aos/dist/aos.css";
 
 function Movie(props) {
   const [found, setNotFound] = useState(null);
-  
 
   useEffect(() => {
     AOS.init({
@@ -18,23 +17,32 @@ function Movie(props) {
   return (
     <div data-os="fade-up">
       <figure className="image-block">
-        <img src={`https://image.tmdb.org/t/p/w300/` + props.poster}  width="250" height="300" />
+        <img
+          src={`https://image.tmdb.org/t/p/w300/` + props.poster}
+          width="250"
+          height="300"
+        />
         <figcaption>
-          <b>{props.title}</b>
+          <button style={{marginBottom:"20px" ,cursor:"text"}}>
+            <strong>{props.title}</strong>
+            <Link
+              state={{
+                name: props.name,
+                data: props.tmdata,
+                title: props.title,
+                year: props.year,
+                mail: props.mail,
+                city: props.city,
+              }}
+              to={`${props.tmdata.id}`}
+            >
+              <i
+                className="fa-solid fa-circle-arrow-right  fa-xl"
+                style={{ paddingLeft: "10px", color: "white" }}
+              ></i>
+            </Link>
+          </button>
           <p>Release Date : {props.release}</p>
-          <Link
-            state={{
-              name: props.name,
-              data: props.tmdata,
-              title: props.title,
-              year:props.year,
-              mail: props.mail,
-              city: props.city,
-            }}
-            to={`${props.tmdata.id}`}
-          >
-            <button>Book Now</button>
-          </Link>
         </figcaption>
       </figure>
     </div>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { CToast, CToastHeader, CToastBody, CToaster } from "@coreui/react";
 import {
   MDBModal,
   MDBModalDialog,
@@ -11,7 +12,6 @@ import {
 } from "mdb-react-ui-kit";
 
 function Payment() {
-  
   const location = useLocation();
 
   const cost = location.state.totalcost;
@@ -31,7 +31,8 @@ function Payment() {
   const [number, setNumber] = useState();
   const [tar, settarget] = useState(false);
   const [centredModal1, setCentredModal1] = useState(false);
-
+  const [toast, addToast] = useState(0);
+  const toaster = useRef();
   var num = cost / count;
   var num1 = cost + 10;
 
@@ -42,7 +43,58 @@ function Payment() {
   function handleselect(data) {
     setactiveb(data);
   }
+  const details = {
+    name,
+    mail,
+    title,
+    count,
+    theater,
+    time,
+    date,
+    city,
+  };
+  const handlepayment = async () => {
+    addToast(exampleToast);
+    setTimeout(() => setCentredModal1(!centredModal1), 5000);
 
+    try {
+      const response = await fetch(`http://localhost:4500/api/auth/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(details),
+      });
+      console.log(details);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const exampleToast = (
+    <CToast>
+      <CToastHeader autohide={true}>
+        <svg
+          className="rounded me-2"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+          focusable="false"
+          role="img"
+        >
+          <rect width="100%" height="100%" fill="black"></rect>
+        </svg>
+        <div className="fw-bold me-auto">Wait {name}</div>
+        <small></small>
+      </CToastHeader>
+      <CToastBody>
+        <div class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        &nbsp;Payment is processing....
+      </CToastBody>
+    </CToast>
+  );
   return (
     <div id="payment">
       <div className="payment">
@@ -166,9 +218,9 @@ function Payment() {
           <div className="payconfirm">
             <button
               className="payconfirm-button"
-              onClick={() =>
-                setTimeout(() => setCentredModal(!centredModal), 100)
-              }
+              onClick={() => {
+                setTimeout(() => setCentredModal(!centredModal), 100);
+              }}
             >
               Pay &nbsp;
               <i className="fa-solid fa-indian-rupee-sign"></i>
@@ -177,6 +229,7 @@ function Payment() {
             </button>
           </div>
         )}
+        <CToaster ref={toaster} push={toast} placement="top-end" />
         <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
           <MDBModalDialog top size="md">
             <MDBModalContent>
@@ -195,7 +248,11 @@ function Payment() {
                       />
                     </div>
                     <div className="pay-details">
-                      <input type="checkbox" onClick={() => settarget(!tar)} />
+                      <input
+                        type="checkbox"
+                        style={{ height: "18px", width: "18px" }}
+                        onClick={() => settarget(!tar)}
+                      />
                       <label> &nbsp;I am not a Robot</label>
                     </div>
                   </div>
@@ -206,11 +263,9 @@ function Payment() {
                   <div className="payconfirm">
                     <button
                       className="payconfirm-button"
-                      onClick={() =>
-                        setTimeout(() => setCentredModal1(!centredModal1), 2000)
-                      }
+                      onClick={handlepayment}
                     >
-                      Go....
+                      Add payment
                     </button>
                   </div>
                 )}
@@ -232,16 +287,12 @@ function Payment() {
                       <i class="fa-solid fa-circle-check fa-3x"></i>
                     </div>
                     <div className="pay-details">
-                      <b>Payment is successful happened through {app}</b>
+                      <b>Your payment is successful .....</b>
                       <div className="payconfirm">
                         <Link
                           state={{ name: name, city: city, mail: mail }}
                           to={`/${city}/movie`}
-                        >
-                          <button className="btn btn-primary  ">
-                            <i className="fa-solid fa-house"></i>
-                          </button>
-                        </Link>
+                        ></Link>
                         {
                           <Link
                             state={{
@@ -261,7 +312,7 @@ function Payment() {
                             to="success"
                           >
                             <button className="btn btn-primary  ">
-                              Ticket
+                              Check Ticket
                             </button>
                           </Link>
                         }

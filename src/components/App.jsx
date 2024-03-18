@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Contact from "./Contact";
- import About from "./About";
+import About from "./About";
 import Ticket from "./Ticket";
 import Home from "./Home";
 import City from "./City";
@@ -10,7 +10,7 @@ import Booking from "./Booking";
 import Success from "./Sucess";
 import Feedback from "./Feedback";
 import Nav from "./Nav";
-import Payment from "./Payment" 
+import Payment from "./Payment";
 function App() {
   return (
     <>
@@ -22,8 +22,14 @@ function App() {
           <Route path="movie" element={<Home />}></Route>
           <Route path="movie/:userId" element={<Ticket />}></Route>
           <Route path="movie/:movie/booking" element={<Booking />}></Route>
-          <Route path="movie/:movie/booking/payment" element={<Payment />}></Route>
-          <Route path="movie/:movie/booking/payment/success" element={<Success />}>
+          <Route
+            path="movie/:movie/booking/payment"
+            element={<Payment />}
+          ></Route>
+          <Route
+            path="movie/:movie/booking/payment/success"
+            element={<Success />}
+          >
             <Route path="feedback" element={<Feedback />}></Route>
           </Route>
         </Route>

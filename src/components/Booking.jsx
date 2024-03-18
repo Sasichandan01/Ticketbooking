@@ -122,10 +122,10 @@ function Booking(props) {
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
-              <div id="seat" className="seat" onClick={handleClick}></div>
-              <div id="seat" className="seat" onClick={handleClick}></div>
-              <div id="seat" className="seat" onClick={handleClick}></div>
-              <div id="seat" className="seat" onClick={handleClick}></div>
+              <div id="seat" className="seat occupied"></div>
+              <div id="seat" className="seat occupied"></div>{" "}
+              <div id="seat" className="seat occupied"></div>
+              <div id="seat" className="seat occupied"></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
@@ -248,8 +248,8 @@ function Booking(props) {
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
-              <div id="seat" className="seat occupied"></div>
-              <div id="seat" className="seat occupied"></div>
+              <div id="seat" className="seat" onClick={handleClick}></div>
+              <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>
               <div id="seat" className="seat" onClick={handleClick}></div>

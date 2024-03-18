@@ -9,9 +9,14 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import { Tooltip } from "react-tooltip";
+import {  useLocation } from "react-router-dom";
 import Nav from "./Nav";
 
 export default function About() {
+  const location = useLocation();
+  const name = location.state.name;
+  const mail = location.state.mail;
+  const city=location.state.city;
   const [centredModal, setCentredModal] = useState(false);
   const [centredModal1, setCentredModal1] = useState(false);
   const [centredModal2, setCentredModal2] = useState(false);
