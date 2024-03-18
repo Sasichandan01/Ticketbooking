@@ -14,13 +14,10 @@ function Booking(props) {
   const photo = location.state.photo;
   const title = location.state.title;
   const city = location.state.city;
-
+  const mvedata=location.state.mvedata;
   var c = parseInt(cost);
 
   const [count, setCount] = useState([0, false]);
-  const [movie, setmovieData] = useState([]);
-  const [found, setNotFound] = useState(null);
-  const [totalcost, settotalcost] = useState(0);
   const [activeb, setactiveb] = useState(null);
   const time = new Date().getHours();
 
@@ -33,17 +30,7 @@ function Booking(props) {
   ];
 
  
-  useEffect(() => {
-    fetch(
-      `https://www.omdbapi.com/?t=${title}&y=2023&apikey=961ea94b`
-    )
-      .then((res) => res.json())
-      .then((data) => setmovieData(data))
-
-      .catch((err) => {
-        setNotFound(true);
-      });
-  }, []);
+  
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -76,7 +63,7 @@ function Booking(props) {
       <div className="booking">
         <div>
           <h4 className="userId1">{title}</h4>
-          <p>{movie.Genre}</p>
+          <p>{mvedata.Genre}</p>
         </div>
         <div className="title2">
           <h4>Theatre : {data}</h4>

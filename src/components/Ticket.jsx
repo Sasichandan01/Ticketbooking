@@ -421,6 +421,7 @@ function Ticket() {
                   title: title,
                   mail: mail,
                   city: city,
+                  mvedata:movie
                 }}
                 to="booking"
               >

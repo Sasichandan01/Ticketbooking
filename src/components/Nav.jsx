@@ -23,8 +23,6 @@ export default function Nav() {
   const toggleShow1 = () => setCityy(!cityy);
   return (
     <>
-     
-      
       <nav className="navbar navbar-expand-lg navbar-dark ">
         <div className="container-fluid">
           <div className="navbar-nav">
@@ -65,10 +63,11 @@ export default function Nav() {
                 {" "}
                 <Link state={{ name: name, mail: mail }} to="/home">
                   <i
-                    className=" fa-solid fa-caret-down"
+                    class="fa-solid fa-retweet"
                     id="drop"
-                   onDoubleClickCapture={toggleShow1}
+                    onDoubleClickCapture={toggleShow1}
                   ></i>
+                 
                 </Link>
               </a>{" "}
               <Tooltip id="my-tooltip3" />

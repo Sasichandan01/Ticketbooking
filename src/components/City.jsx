@@ -1,7 +1,7 @@
 import React from "react";
 import cities from "../cities";
 import { Link, useLocation } from "react-router-dom";
-import { CToast, CToastHeader, CToastBody } from "@coreui/react";
+
 export default function Ticket() {
   const location = useLocation();
 
@@ -16,29 +16,7 @@ export default function Ticket() {
 
   return (
     <>
-      <CToast
-        animation={true}
-        autohide={true}
-        visible={true}
-        placement="bottom-end"
-      >
-        <CToastHeader closeButton>
-          <svg
-            className="rounded me-2"
-            width="20"
-            height="20"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            role="img"
-          >
-            <rect width="100%" height="100%" fill="#007aff"></rect>
-          </svg>
-          <div className="fw-bold me-auto">Hello, {name}</div>
-          <small></small>
-        </CToastHeader>
-        <CToastBody>Welcome to Flix Booking</CToastBody>
-      </CToast>
+      
       <div className="city">
         <div className="city-form">
           <h2>Select a city:</h2>

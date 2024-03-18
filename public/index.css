@@ -159,6 +159,9 @@ a {
 #drop {
   cursor: pointer;
   margin-left: 10px;
+  color:black !important;
+  
+  padding :2px;
 }
 
 .circle {

@@ -75,7 +75,7 @@ function Sucess() {
           </div>
           <div className="success-details">
             <p>Total Cost :</p>
-            <p>{cost}/-</p>
+            <p>{cost+10}/-</p>
           </div>
           <div className="success-details">
             <p>Theatre :</p>
