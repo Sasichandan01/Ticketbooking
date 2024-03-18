@@ -80,7 +80,7 @@ function Ticket() {
 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?t=${title}&y=2023&plot=full&apikey=961ea94b`
+      `https://www.omdbapi.com/?t=${title}&y=${year}&plot=full&apikey=961ea94b`
     )
       .then((res) => res.json())
       .then((data) => setmovieData(data))
@@ -89,7 +89,7 @@ function Ticket() {
         setNotFound(true);
       });
   }, []);
-
+ 
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${mvedata.id}/credits?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
