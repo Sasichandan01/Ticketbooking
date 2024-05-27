@@ -317,7 +317,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
-
+font-family: "Encode Sans SC", sans-serif;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -717,11 +717,7 @@ li {
   border-color: white;
   background-color:white;
 }
-.castimages:hover {
-  border-radius: 10px;
-  outline: 2px solid black;
-  font-style: italic;
-}
+
 .castimages:hover .cast-img{
  outline:none;
 }
@@ -932,7 +928,6 @@ button {
   height: 90px;
   width: 400px;
   margin: 15px auto;
-
   transform: rotateX(60deg);
   box-shadow: 0 3px 10px grey;
 }

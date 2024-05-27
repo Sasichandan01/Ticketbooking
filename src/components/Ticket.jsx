@@ -258,7 +258,7 @@ function Ticket() {
                       style={{
                         display: "flex",
                         flexWrap: "wrap",
-                        justifyContent: "center",
+                        
                       }}
                     >
                       <div style={{ marginRight: "10px", marginTop: "5px" }}>

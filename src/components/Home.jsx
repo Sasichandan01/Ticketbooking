@@ -102,7 +102,7 @@ function Home() {
               city={city}
               id={data.id}
               tmdata={data}
-              year="2023"
+              year={data.release_date}
               release={data.release_date}
               title={data.title}
               poster={data.poster_path}
@@ -117,7 +117,7 @@ function Home() {
               name={name}
               mail={mail}
               city={city}
-              year="2023"
+              year={data.release_date}
               id={data.id}
               tmdata={data}
               release={data.release_date}

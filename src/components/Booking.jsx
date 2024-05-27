@@ -19,7 +19,7 @@ function Booking(props) {
 
   const [count, setCount] = useState([0, false]);
   const [activeb, setactiveb] = useState(null);
-  const time = new Date().getHours();
+ 
 
   var timings = [
     { value: "11", name: "11:00 A.M" },
@@ -268,7 +268,7 @@ function Booking(props) {
             >
               <div className="confirm">
                 <button type="button" className="ticket-button">
-                  Confirm {count[0]} tickets
+                  CONFIRM {count[0]} TICKET(S)
                 </button>
               </div>
             </Link>
