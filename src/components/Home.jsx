@@ -83,6 +83,7 @@ function Home() {
               mail={mail}
               city={city}
               id={data.id}
+              key={data.id}
               tmdata={data}
               year={data.release_date}
               release={data.release_date}

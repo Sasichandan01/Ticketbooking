@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -5,12 +7,12 @@ import {
   MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
-
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import moment from "moment";
-
+import Trailer from "./Trailer";
+import Reviews from "./reviews";
 function Ticket() {
   const img_300 = "https://image.tmdb.org/t/p/w300";
 
@@ -56,6 +58,7 @@ function Ticket() {
 
   const [movie, setmovieData] = useState([]);
   const [cost, setCost] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [found, setNotFound] = useState(null);
   const [credits, setCredits] = useState(null);
   const [centredModal, setCentredModal] = useState(false);
@@ -88,6 +91,7 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
  
   useEffect(() => {
@@ -177,138 +181,11 @@ function Ticket() {
                 className="movie-image"
                 src={`https://image.tmdb.org/t/p/w500/` + mvedata.poster_path}
               />
-              <figcaption1>
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "space-evenly",
-                  }}
-                >
-                  <div>
-                    <button className="figcaptionbutton" onClick={toggleShow}>
-                      <i
-                        className="fa-brands fa-youtube"
-                        style={{ color: "#FF0000", backgroundColor: "white" }}
-                      ></i>
-                      &nbsp; Watch Trailer
-                    </button>
-                  </div>
-                  <div>
-                    <button className="figcaptionbutton" onClick={toggleShow1}>
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                      &nbsp;&nbsp;Reviews
-                    </button>
-                  </div>
-                </div>
-              </figcaption1>
+              
             </figure>
           </div>
-          <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
-            <MDBModalDialog centered size="lg">
-              <MDBModalContent>
-                <MDBModalHeader>
-                  <strong>{movie.Title}- Trailer</strong>
-                </MDBModalHeader>
-                <MDBModalBody>
-                  {trailer !== null && (
-                    <ul className="ulvideo">
-                      {trailer
-                        .filter((data) => data.name.includes("Trailer"))
-                        .map((data1) => (
-                          <div className="videodata">
-                            <li>{data1.name}</li>
-                            <a
-                              target="_blank"
-                              href={`https://www.youtube.com/watch/${data1.key}`}
-                            >
-                              <button className="videodatabutton">
-                                <i
-                                  className="fa-brands fa-youtube"
-                                  style={{ color: "#FF0000" }}
-                                ></i>
-                              </button>
-                            </a>
-                          </div>
-                        ))}
-                    </ul>
-                  )}
-                </MDBModalBody>
-                <MDBModalFooter>
-                  <button className="close" onClick={toggleShow}>
-                    Close
-                  </button>
-                </MDBModalFooter>
-              </MDBModalContent>
-            </MDBModalDialog>
-          </MDBModal>
-          <MDBModal
-            tabIndex="-1"
-            show={centredModal1}
-            setShow={setCentredModal1}
-          >
-            <MDBModalDialog centered size="lg">
-              <MDBModalContent>
-                <MDBModalHeader>
-                  <strong>{movie.Title}-Reviews</strong>
-                </MDBModalHeader>
-                <MDBModalBody>
-                  {review?.length === 0 && (
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        
-                      }}
-                    >
-                      <div style={{ marginRight: "10px", marginTop: "5px" }}>
-                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                      </div>
-
-                      <div>
-                        <h2>NO REVIEWS</h2>
-                      </div>
-                    </div>
-                  )}
-                  {review !== null && (
-                    <ul>
-                      {review.map((data) => (
-                        <li>
-                          <div className="reviewdata">
-                            <div
-                              style={{
-                                display: "flex",
-                                flexWrap: "wrap",
-                                justifyContent: "space-between",
-                                outline: "1px solid black",
-                                padding: " 10px ",
-                              }}
-                            >
-                              {" "}
-                              <p>
-                                Name:&nbsp;
-                                <b>{data.author}</b>
-                              </p>
-                              <p>
-                                Rating: <b>{data.author_details.rating}/10</b>
-                              </p>
-                            </div>
-
-                            <p style={{ padding: " 10px " }}>{data.content}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </MDBModalBody>
-                <MDBModalFooter>
-                  <button className="close" onClick={toggleShow1}>
-                    Close
-                  </button>
-                </MDBModalFooter>
-              </MDBModalContent>
-            </MDBModalDialog>
-          </MDBModal>
+          
+         
           <div className="matter">
             <h1 className="matter-title">{title} </h1>
 
@@ -421,7 +298,7 @@ function Ticket() {
                   title: title,
                   mail: mail,
                   city: city,
-                  mvedata:movie
+                  mvedata: movie,
                 }}
                 to="booking"
               >
@@ -451,7 +328,7 @@ function Ticket() {
           <p>{plot}</p>
         </div>
       </div>
-      <div className="plot">
+      <div className="plot" id="plott">
         <h4>
           <strong
             style={{
@@ -486,7 +363,7 @@ function Ticket() {
                     <div className="a1234">
                       <a
                         href={`https://en.wikipedia.org/wiki/${c?.name}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <button className="castbutton">
                           <i class="fa-brands fa-wikipedia-w"></i>
@@ -497,7 +374,7 @@ function Ticket() {
                     <div className="a1234">
                       <a
                         href={`https://www.google.com/search?q=${c?.name}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <button className="castbutton">
                           <i class="fa-brands fa-google"></i>
@@ -528,19 +405,18 @@ function Ticket() {
           </strong>
         </h4>
         <div className="castimage">
-          
-            <img
-              className="cast-img"
-              src={`https://cdn.vectorstock.com/i/1000x1000/22/05/male-profile-picture-vector-1862205.webp`}
-              height="150"
-              width="150"
-            />
-   
+          <img
+            className="cast-img"
+            src={`https://cdn.vectorstock.com/i/1000x1000/22/05/male-profile-picture-vector-1862205.webp`}
+            height="150"
+            width="150"
+          />
+
           <div className="castbuttons">
             <div className="a1234">
               <a
                 href={`https://en.wikipedia.org/wiki/${movie.Director}`}
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <button className="castbutton">
                   <i class="fa-brands fa-wikipedia-w"></i>
@@ -551,7 +427,7 @@ function Ticket() {
             <div className="a1234">
               <a
                 href={`https://www.google.com/search?q=${movie.Director}`}
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <button className="castbutton">
                   <i class="fa-brands fa-google"></i>
@@ -562,48 +438,11 @@ function Ticket() {
         </div>
         <p style={{ marginTop: "10px" }}>{movie.Director}</p>
       </div>
-      <div className="plot">
-        <h4>
-          <strong
-            style={{
-              borderRadius: "10px",
-              backgroundColor: "#D8D9DA",
-              padding: "0 5px",
-            }}
-          >
-            {review?.length === 0 ? "No reviews" : "Top Reviews"}
-          </strong>
-        </h4>
-
-        <div style={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}>
-          {reviewss !== null &&
-            reviewss.map((data) => (
-              <div className="reviewdata1">
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "space-between",
-                    outline: "1px solid black",
-                    padding: " 10px ",
-                    position: "sticky",
-                  }}
-                >
-                  {" "}
-                  <p>
-                    Name:&nbsp;
-                    <b>{data.author}</b>
-                  </p>
-                  <p>
-                    Rating: <b>{data.author_details.rating}/10</b>
-                  </p>
-                </div>
-
-                <p style={{ margin: "10px" }}>{data.content}....</p>
-              </div>
-            ))}
-        </div>
-      </div>
+      
+       
+        <Reviews reviews={review} />
+        <Trailer videos={trailer}/>
+      
     </>
   );
 }
