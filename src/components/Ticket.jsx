@@ -2,14 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalBody,
-  MDBModalFooter,
-} from "mdb-react-ui-kit";
 import moment from "moment";
 import Trailer from "./Trailer";
 import Reviews from "./reviews";
@@ -61,15 +53,10 @@ function Ticket() {
   // eslint-disable-next-line no-unused-vars
   const [found, setNotFound] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [centredModal, setCentredModal] = useState(false);
-  const [centredModal1, setCentredModal1] = useState(false);
   const [activebutton, setactive] = useState(null);
   const [activeb, setactiveb] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [review, setReview] = useState(null);
-
-  const toggleShow = () => setCentredModal(!centredModal);
-  const toggleShow1 = () => setCentredModal1(!centredModal1);
 
   function handlecost(data) {
     setCost(data);
@@ -104,6 +91,7 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     fetch(
@@ -115,6 +103,7 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     fetch(
@@ -126,6 +115,7 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -137,10 +127,7 @@ function Ticket() {
   if (credits !== null) {
     credit = credits.slice(0, 6);
   }
-  var reviewss = null;
-  if (review !== null) {
-    reviewss = review.slice(0, 3);
-  }
+  
   var num = 0;
 
   if (movie.imdbVotes !== undefined) {
