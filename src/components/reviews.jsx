@@ -22,7 +22,7 @@ export default function reviews(props) {
   };
   return (
     <div>
-      <div className="plot">
+      <div className="plot" id="plott">
         <h4>
           <strong
             style={{
@@ -35,22 +35,19 @@ export default function reviews(props) {
           </strong>
         </h4>
         <Carousel
-          swipeable={false}
-          draggable={false}
-          
+          swipeable={true}
+          draggable={true}
           responsive={responsive}
+          centerMode={false}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
-          
           autoPlaySpeed={1000}
           keyBoardControl={true}
           customTransition="all .5"
           transitionDuration={500}
           containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-        
-         
           itemClass="carousel-item-padding-40-px"
+          className="carousell"
         >
           {review !== null &&
             review.map((data) => (

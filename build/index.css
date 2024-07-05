@@ -159,9 +159,9 @@ a {
 #drop {
   cursor: pointer;
   margin-left: 10px;
-  color:black !important;
-  
-  padding :2px;
+  color: black !important;
+
+  padding: 2px;
 }
 
 .circle {
@@ -300,7 +300,7 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+
   width: 100%;
 
   background-color: #fcfcfc;
@@ -317,7 +317,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
-font-family: "Encode Sans SC", sans-serif;
+  font-family: "Encode Sans SC", sans-serif;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -589,7 +589,9 @@ li {
   border-radius: 10px;
   height: 40px;
 }
-
+#plott{
+  margin-right:100px;
+}
 .plotdata {
   line-height: 30px;
   overflow: hidden;
@@ -705,8 +707,8 @@ li {
   margin-left: 5px;
 }
 .castimage:hover .castbuttons .a1234 {
-  margin-top:25px;
-  margin-bottom:25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .castbuttons {
   height: 0px;
@@ -715,11 +717,11 @@ li {
 .castbutton {
   border-radius: 5%;
   border-color: white;
-  background-color:white;
+  background-color: white;
 }
 
-.castimages:hover .cast-img{
- outline:none;
+.castimages:hover .cast-img {
+  outline: none;
 }
 .cast-img {
   border-radius: 10px;
@@ -751,19 +753,41 @@ li {
 .reviewdata1:hover {
   outline: 2px solid red;
 }
-#heart {
-  color: green;
+
+.youtube {
+  font-family: "Encode Sans SC", sans-serif;
+
+  padding: 20px 0 0 0;
+  display: block;
 }
-#noheart {
-  color: none;
+#youtube {
+  margin: 0 10% 0 10%;
+  background-color: rgb(254, 251, 251);
 }
+
+.videoplayer {
+  height: 400px;
+  width: 600px;
+  border-radius: 5%;
+  overflow: hidden;
+}
+.video-name {
+  height: 450px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+.video_name:hover {
+  outline: 2px solid black;
+}
+
 /* Booking page */
 .booking {
   font-family: "Encode Sans SC", sans-serif;
   height: 100px;
   color: #fff;
   display: flex;
-
   justify-content: space-between;
   background-color: #1f2533;
   padding-left: 100px;
