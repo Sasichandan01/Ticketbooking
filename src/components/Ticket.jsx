@@ -372,12 +372,12 @@ function Ticket() {
                 </div>
 
                 <div>
-                  <p style={{ marginTop: "10px" }}>{c?.name}</p>
+                  <p style={{ marginTop: "10px",width:"150px",overflow:"hidden"}}>{c?.name}</p>
                 </div>
               </div>
             ))}
         </div>
-        {!credit && <p>{movie.Actors}</p>}
+       
       </div>
       <div className="plot">
         <h4>

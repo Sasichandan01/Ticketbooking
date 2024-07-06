@@ -766,7 +766,6 @@ li {
 
 .youtube {
   font-family: "Encode Sans SC", sans-serif;
-
   padding: 20px 0 0 0;
   display: block;
 }
@@ -787,6 +786,22 @@ li {
   margin-left: auto;
   margin-right: auto;
   overflow-x: auto;
+}
+@media only screen and(max-width:500px) {
+  
+  .videoplayer{
+    height: 200px !important;
+    width:300px !important;
+    overflow: hidden;
+  }
+  .video-name{
+    height: 250px !important;
+    width:300px !important;
+  }
+  
+  #youtube {
+    padding: 0;
+  }
 }
 .video_name:hover {
   outline: 2px solid black;
