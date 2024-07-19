@@ -59,8 +59,7 @@ function Payment() {
   const handlepayment = async () => {
     addToast(exampleToast);
     setCentredModal(!centredModal)
-    setTimeout(() => setCentredModal1(!centredModal1), 5000);
-
+    
     try {
       const response = await fetch(
         `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
@@ -73,7 +72,8 @@ function Payment() {
         }
       );
       console.log(details);
-      
+      setCentredModal1(!centredModal1);
+
     } catch (err) {
       console.log(err);
     }
