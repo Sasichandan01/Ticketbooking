@@ -23,7 +23,7 @@ export default function Nav() {
   const [cityy, setCityy] = useState(false);
   const toggleShow1 = () => setCityy(!cityy);
 
-  const handleclick = async () => {};
+ 
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark ">
@@ -127,11 +127,7 @@ export default function Nav() {
                             </p>
                             <p> {mail}</p>
                           </div>
-                          <div className="gfg-details1">
-                            <button onClick={handleclick}>
-                              <strong>Old Bookings</strong>
-                            </button>
-                          </div>
+                          
                           <div className="gfg-details">
                             <a href="/">
                               <button>

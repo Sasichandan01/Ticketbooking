@@ -11,7 +11,7 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import { Tooltip } from "react-tooltip";
-//import { useLocation } from "react-router-dom";
+
 import Nav from "./Nav";
 
 export default function About() {
@@ -31,7 +31,7 @@ export default function About() {
           data-tooltip-id="my-tooltip"
           data-tooltip-content="About the website"
           data-tooltip-place="top"
-          href=""
+          
         >
           <button onClick={toggleShow}>
             <i class="fa-solid fa-circle-info"></i>

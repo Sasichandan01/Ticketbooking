@@ -1,7 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CToast, CToastHeader, CToastBody, CToaster } from "@coreui/react";
+import {
+  CToast,
+  CToastHeader,
+  CToastBody,
+  CToaster,
+  CToastClose,
+} from "@coreui/react";
 import {
   MDBModal,
   MDBModalDialog,
@@ -26,6 +32,7 @@ function Payment() {
   const mail = location.state.mail;
   const city = location.state.city;
 
+
   const [activeb, setactiveb] = useState(null);
   const [app, setApp] = useState(null);
   const [centredModal, setCentredModal] = useState(false);
@@ -44,6 +51,9 @@ function Payment() {
   function handleselect(data) {
     setactiveb(data);
   }
+     const removeToast =()=> {
+       addToast(0);
+     };
   const details = {
     name,
     mail,
@@ -71,7 +81,8 @@ function Payment() {
           body: JSON.stringify(details),
         }
       );
-      console.log(details);
+      
+      addToast(0);
       setCentredModal1(!centredModal1);
 
     } catch (err) {
@@ -80,7 +91,7 @@ function Payment() {
   };
   const exampleToast = (
     <CToast>
-      <CToastHeader autohide={true}>
+      <CToastHeader autohide={false}>
         <svg
           className="rounded me-2"
           width="20"
@@ -283,7 +294,12 @@ function Payment() {
           </MDBModalDialog>
         </MDBModal>
 
-        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1}>
+        <MDBModal
+          backdrop={false}
+          tabIndex="-1"
+          show={centredModal1}
+          setShow={setCentredModal1}
+        >
           <MDBModalDialog top size="md">
             <MDBModalContent>
               <MDBModalHeader>
