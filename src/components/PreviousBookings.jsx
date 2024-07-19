@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import react, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -27,6 +28,7 @@ function PreviousBookings() {
         }
       })
       .catch((err) => console.log(err));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
  
   return (
