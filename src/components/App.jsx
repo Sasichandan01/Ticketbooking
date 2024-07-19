@@ -11,12 +11,14 @@ import Success from "./Sucess";
 import Feedback from "./Feedback";
 import Nav from "./Nav";
 import Payment from "./Payment";
+import PreviousBookings from "./PreviousBookings"
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Contact />}></Route>
         <Route path="/home" element={<City />}></Route>
+        <Route path="/previousbookings" element={<PreviousBookings />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/:cityname" element={<Nav />}>
           <Route path="movie" element={<Home />}></Route>

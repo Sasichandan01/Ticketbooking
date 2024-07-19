@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import {
   MDBModal,
@@ -8,11 +10,10 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
-import { Link, useParams, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+
 export default function Nav() {
-  
- 
   const location = useLocation();
   const name = location.state.name;
   const mail = location.state.mail;
@@ -21,23 +22,28 @@ export default function Nav() {
   const toggleShow = () => setCentredModal(!centredModal);
   const [cityy, setCityy] = useState(false);
   const toggleShow1 = () => setCityy(!cityy);
+
+  const handleclick = async () => {};
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark ">
         <div className="container-fluid">
           <div className="navbar-nav">
-            <a className="navbar-brand mt-2 mt-lg-0" href="/">
+            <Link
+              className="navbar-brand mt-2 mt-lg-0"
+              state={{ name: name, city: city, mail: mail }}
+              to={`/home`}
+            >
               FlixBooking
-            </a>
-
+            </Link>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
                   className="nav-link"
                   state={{ name: name, city: city, mail: mail }}
-                  to={`/${city}/movie`}
+                  to={`/previousbookings`}
                 >
-                  Home
+                  Bookings
                 </Link>
               </li>
               <li className="nav-item">
@@ -67,7 +73,6 @@ export default function Nav() {
                     id="drop"
                     onDoubleClickCapture={toggleShow1}
                   ></i>
-                 
                 </Link>
               </a>{" "}
               <Tooltip id="my-tooltip3" />
@@ -121,6 +126,11 @@ export default function Nav() {
                               </strong>
                             </p>
                             <p> {mail}</p>
+                          </div>
+                          <div className="gfg-details1">
+                            <button onClick={handleclick}>
+                              <strong>Old Bookings</strong>
+                            </button>
                           </div>
                           <div className="gfg-details">
                             <a href="/">

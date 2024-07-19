@@ -25,8 +25,7 @@ function Home() {
         setNotFound(true);
       });
   }, []);
-  console.log(JSON.stringify(movie));
-  useEffect(() => {
+ useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 

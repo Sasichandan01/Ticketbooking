@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Movie(props) {
-  const [found, setNotFound] = useState(null);
+  
 
   useEffect(() => {
     AOS.init({
@@ -21,6 +21,7 @@ function Movie(props) {
           src={`https://image.tmdb.org/t/p/w300/` + props.poster}
           width="250"
           height="300"
+          alt=""
         />
         <figcaption>
           <button style={{marginBottom:"20px" ,cursor:"text"}}>

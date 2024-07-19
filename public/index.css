@@ -110,6 +110,56 @@ a {
   border-right-style: none;
   border-right-width: medium;
 }
+/* PreviousBookings */
+
+.prevbook{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  width: 40%;
+  text-align: center;
+  margin:auto;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  border:1px solid black;
+  margin-top: 50px;;
+}
+.prevtable{
+  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:5%;
+  width: fit-content;
+}
+
+.prevbookdata{
+  display: flex;
+  font-family: "League Spartan", sans-serif;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;;
+  margin:auto;
+  border: 1px solid black;
+  margin-bottom:20px;
+  border-radius: 20px;;
+}
+
+.prevbookdataimg{
+  height:150px;
+  width:130px;
+  margin:50px 20px 50px 20px;
+  border-radius: 10px;
+}
+
+.prevbookdetails{
+  width:100%;
+  padding-right: 20px;
+  margin:50px 0px 50px 20px;
+}
+
+
 
 /* Navbar */
 
@@ -173,7 +223,35 @@ a {
   border-radius: 10px;
   color: #4298e7;
 }
-
+.gfg {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gfg-content {
+  display: block;
+  margin: auto;
+}
+.gfg-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gfg-details button {
+  border: 0.5px;
+  
+}
+.gfg-details1 button {
+  border: 0.5px;
+  margin-bottom: 5px;
+}
+.gfg-details button:hover {
+  transform: scale(1.05);
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 1000px) {
+  .gfg-content img {
+    margin-bottom: 20px;
+  }
+}
 /* City */
 
 .city-form {
@@ -1088,30 +1166,7 @@ hr {
   transform: scale(1.05);
   text-transform: uppercase;
 }
-.gfg {
-  display: flex;
-  flex-wrap: wrap;
-}
-.gfg-content {
-  display: block;
-  margin: auto;
-}
-.gfg-details {
-  display: flex;
-  flex-wrap: wrap;
-}
-.gfg-details button {
-  border: 0.5px;
-}
-.gfg-details button:hover {
-  transform: scale(1.05);
-  text-transform: uppercase;
-}
-@media only screen and (max-width: 1000px) {
-  .gfg-content img {
-    margin-bottom: 20px;
-  }
-}
+
 .pay-details {
   margin: 20px auto;
 }

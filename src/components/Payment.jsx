@@ -46,26 +46,33 @@ function Payment() {
   const details = {
     name,
     mail,
+    photo,
     title,
-    count,
-    theater,
     time,
     date,
     city,
+    count,
+    cost,
+    theater
   };
   const handlepayment = async () => {
     addToast(exampleToast);
+    setCentredModal(!centredModal)
     setTimeout(() => setCentredModal1(!centredModal1), 5000);
 
     try {
-      const response = await fetch(`http://localhost:4500/api/auth/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(details),
-      });
+      const response = await fetch(
+        `https://ticketbooking-backend-6152.onrender.com//api/auth/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(details),
+        }
+      );
       console.log(details);
+      
     } catch (err) {
       console.log(err);
     }
@@ -104,6 +111,7 @@ function Payment() {
             src={`https://image.tmdb.org/t/p/w500/` + photo}
             height="120"
             width="120"
+            alt=""
           />
         </div>
         <div className="pay-content">
