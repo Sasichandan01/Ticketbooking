@@ -4,7 +4,7 @@ function Feedback() {
   const location = useLocation();
 
   const name = location.state.name;
-  const mail = location.state.mail;
+  //const mail = location.state.mail;
   const [ratings, setRating] = useState(0);
   const handlestar = (num) => {
     setRating(num);

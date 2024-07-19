@@ -36,6 +36,7 @@ function Sucess() {
           <figure>
             <img
               className="success-image"
+              alt=""
               src={`https://image.tmdb.org/t/p/w500/` + photo}
             />
             <figcaption>Booking id: &nbsp;&nbsp; #{num} </figcaption>

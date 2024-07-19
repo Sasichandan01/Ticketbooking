@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import {
   MDBModal,
@@ -13,10 +14,7 @@ import {  useLocation } from "react-router-dom";
 import Nav from "./Nav";
 
 export default function About() {
-  const location = useLocation();
-  const name = location.state.name;
-  const mail = location.state.mail;
-  const city=location.state.city;
+
   const [centredModal, setCentredModal] = useState(false);
   const [centredModal1, setCentredModal1] = useState(false);
   const [centredModal2, setCentredModal2] = useState(false);
@@ -33,6 +31,7 @@ export default function About() {
           data-tooltip-id="my-tooltip"
           data-tooltip-content="About the website"
           data-tooltip-place="top"
+          href=""
         >
           <button onClick={toggleShow}>
             <i class="fa-solid fa-circle-info"></i>
@@ -50,11 +49,12 @@ export default function About() {
                 <p>
                   This is the <strong>front-end</strong> website created for
                   booking movie tickets. Payment page is a
-                  <strong> static page</strong>.You dont need any money. It does not store old data. If
-                  you cannot find an option to move to the next page, please
-                  ensure that you have selected all the necessary data on the
-                  current page. Once you have selected the required information,
-                  you will be provided with an option to proceed.
+                  <strong> static page</strong>.You dont need any money. It does
+                  not store old data. If you cannot find an option to move to
+                  the next page, please ensure that you have selected all the
+                  necessary data on the current page. Once you have selected the
+                  required information, you will be provided with an option to
+                  proceed.
                 </p>
               </MDBModalBody>
               <MDBModalFooter>
@@ -126,6 +126,7 @@ export default function About() {
                   <p>Linkedin:</p>
                   <a
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.linkedin.com/in/bhargav-sasi-chandan-67575a249/"
                   >
                     <i class="fa-solid fa-link"></i>
