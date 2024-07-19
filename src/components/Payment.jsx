@@ -63,7 +63,7 @@ function Payment() {
 
     try {
       const response = await fetch(
-        `https://ticketbooking-backend-6152.onrender.com//api/auth/contact`,
+        `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
         {
           method: "POST",
           headers: {
