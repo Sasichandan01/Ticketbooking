@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import {
@@ -10,11 +11,10 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import { Tooltip } from "react-tooltip";
-import {  useLocation } from "react-router-dom";
+//import { useLocation } from "react-router-dom";
 import Nav from "./Nav";
 
 export default function About() {
-
   const [centredModal, setCentredModal] = useState(false);
   const [centredModal1, setCentredModal1] = useState(false);
   const [centredModal2, setCentredModal2] = useState(false);
