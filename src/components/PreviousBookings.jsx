@@ -30,12 +30,14 @@ function PreviousBookings() {
       .catch((err) => console.log(err));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+ console.log(filteredUsers);
  
   return (
     <>
       <Nav />
       <div className="prevbook">
-        <h3>Previous Bookings</h3>
+        {filteredUsers.length!==0 && <h3>Previous Bookings</h3>}
+        {filteredUsers.length===0 && <h3>No Previous Bookings</h3>}
       </div>
       <div>
         <div className="prevtable">
