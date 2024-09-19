@@ -16,7 +16,8 @@ function Ticket() {
   const mail = location.state.mail;
   const city = location.state.city;
   const year = location.state.year;
-
+  
+  
   var days = [
     {
       id: 0,
@@ -55,8 +56,7 @@ function Ticket() {
   const [credits, setCredits] = useState(null);
   const [activebutton, setactive] = useState(null);
   const [activeb, setactiveb] = useState(null);
-  const [trailer, setTrailer] = useState(null);
-  const [review, setReview] = useState(null);
+  
 
   function handlecost(data) {
     setCost(data);
@@ -93,30 +93,8 @@ function Ticket() {
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${mvedata.id}/videos?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
-    )
-      .then((res) => res.json())
-      .then((data) => setTrailer(data.results))
-
-      .catch((err) => {
-        setNotFound(true);
-      });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${mvedata.id}/reviews?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
-    )
-      .then((res) => res.json())
-      .then((data) => setReview(data.results))
-
-      .catch((err) => {
-        setNotFound(true);
-      });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -137,6 +115,8 @@ function Ticket() {
       }
     }
   }
+ 
+  
   var imdb = "N/A";
   var num3 = parseInt(mvedata.vote_average);
   imdb = movie.imdbRating === "N/A" ? num3 : movie.imdbRating;
@@ -168,11 +148,8 @@ function Ticket() {
                 className="movie-image"
                 src={`https://image.tmdb.org/t/p/w500/` + mvedata.poster_path}
               />
-              
             </figure>
           </div>
-          
-         
           <div className="matter">
             <h1 className="matter-title">{title} </h1>
 
@@ -426,9 +403,8 @@ function Ticket() {
         <p style={{ marginTop: "10px" }}>{movie.Director}</p>
       </div>
       
-       
-        <Reviews reviews={review} />
-        <Trailer videos={trailer}/>
+        <Reviews id={mvedata.id} />
+        <Trailer id={mvedata.id}/>
       
     </>
   );

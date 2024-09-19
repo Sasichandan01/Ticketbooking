@@ -26,13 +26,16 @@ function Home() {
         setNotFound(true);
       });
   }, []);
+
  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-console.log(found);
+
+
   var sortedmovies = [...movie].sort((p1, p2) =>
     p1.title > p2.title ? 1 : p1.title < p2.title ? -1 : 0
   );
+  
   var releasedmovie = [...movie].sort((p1, p2) =>
     p1.release_date < p2.release_date
       ? 1

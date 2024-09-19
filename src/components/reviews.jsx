@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-export default function reviews(props) {
-  const review = props.reviews;
+
+function Reviews(props) {
+  const id = props.id;
+  const [review, setReview] = useState(null);
+  const [found, setNotFound] = useState(null);
+
+ 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1200 },
-      items:3,
+      items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -20,6 +25,19 @@ export default function reviews(props) {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+   useEffect(() => {
+     fetch(
+       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
+     )
+       .then((res) => res.json())
+       .then((data) => setReview(data.results))
+
+       .catch((err) => {
+         setNotFound(true);
+       });
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
+ 
   return (
     <div>
       <div className="plot" id="plott">
@@ -39,12 +57,11 @@ export default function reviews(props) {
           draggable={true}
           responsive={responsive}
           centerMode={false}
-          ssr={true} // means to render carousel on server-side.
           infinite={true}
           autoPlaySpeed={1000}
+          customTransition="transform 0.5s ease-in-out"
           keyBoardControl={true}
-          customTransition="all .5"
-          transitionDuration={500}
+          transitionDuration={1000}
           containerClass="carousel-container"
           itemClass="carousel-item-padding-40-px"
           className="carousell"
@@ -59,7 +76,6 @@ export default function reviews(props) {
                     justifyContent: "space-between",
                     outline: "1px solid black",
                     padding: " 10px ",
-                    position: "sticky",
                   }}
                 >
                   {" "}
@@ -76,8 +92,9 @@ export default function reviews(props) {
               </div>
             ))}
         </Carousel>
-
       </div>
     </div>
   );
 }
+
+export default Reviews;
