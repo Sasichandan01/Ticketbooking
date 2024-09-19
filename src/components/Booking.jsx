@@ -90,7 +90,7 @@ function Booking(props) {
           </p>
           <ul className="showcase" data-aos="fade-out">
             <li>
-              <div id="seat" className="seat"></div>
+              <div id="seat" className="seat2"></div>
               <small className="status">Available</small>
             </li>
             <li>

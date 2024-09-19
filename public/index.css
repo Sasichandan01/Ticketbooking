@@ -979,6 +979,16 @@ button {
   align-items: center;
   justify-content: center;
 }
+.seat2{
+  height: 18px;
+  width: 20px;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid black;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
 .seat1 {
   height: 18px;
   width: 20px;
