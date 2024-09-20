@@ -22,11 +22,11 @@ function Booking(props) {
  
 
   var timings = [
-    { value: "11", name: "11:00 A.M" },
-    { value: "14", name: "2:00 P.M" },
-    { value: "17", name: "5:00 P.M" },
-    { value: "20", name: "8:00 P.M" },
-    { value: "24", name: "10:00 P.M" },
+    { value: "11", name: "11:00 " },
+    { value: "14", name: "14:00 " },
+    { value: "17", name: "17:00 " },
+    { value: "20", name: "20:00 " },
+    { value: "24", name: "22:00 " },
   ];
 
  

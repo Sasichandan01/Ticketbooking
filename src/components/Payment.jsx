@@ -43,7 +43,7 @@ function Payment() {
   const toaster = useRef();
   var num = cost / count;
   var num1 = cost + 10;
-
+  const review="review";
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -64,13 +64,25 @@ function Payment() {
     city,
     count,
     cost,
-    theater
+    theater,
+    review
   };
   const handlepayment = async () => {
     addToast(exampleToast);
     setCentredModal(!centredModal)
     
-    try {
+    // try {
+    //   const response = await fetch(
+    //     `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(details),
+    //     }
+    //   );
+      try {
       const response = await fetch(
         `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
         {
@@ -333,6 +345,7 @@ function Payment() {
                               mail: mail,
                               city: city,
                               number: number,
+                              review:review
                             }}
                             to="success"
                           >

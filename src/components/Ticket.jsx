@@ -23,16 +23,19 @@ function Ticket() {
       id: 0,
       name: "button-1",
       date: moment().add(1, "days").format("ddd, D MMM"),
+      date1: moment().add(1, "days").format("ddd, D MMM,YYYY"),
     },
     {
       id: 1,
       name: "button-2",
       date: moment().add(2, "days").format("ddd, D MMM"),
+      date1: moment().add(2, "days").format("ddd, D MMM,YYYY"),
     },
     {
       id: 2,
       name: "button-3",
       date: moment().add(3, "days").format("ddd, D MMM"),
+      date1: moment().add(3, "days").format("ddd, D MMM,YYYY"),
     },
   ];
 
@@ -137,7 +140,8 @@ function Ticket() {
     movie.Plot?.length >= mvedata.overview?.length
       ? movie.Plot
       : mvedata.overview;
-
+  
+  
   return (
     <>
       <div className="movie">
@@ -209,9 +213,9 @@ function Ticket() {
                   type="button"
                   name={data.date}
                   id={
-                    activebutton === data.date ? "datebuttonid" : "datebutton"
+                    activebutton === data.date1 ? "datebuttonid" : "datebutton"
                   }
-                  onClick={() => dateclick(data.date)}
+                  onClick={() => dateclick(data.date1)}
                 >
                   {data.date}
                 </button>
@@ -256,7 +260,7 @@ function Ticket() {
                 state={{
                   data: activeb,
                   cost: cost,
-                  date: activebutton,
+                  date:activebutton,
                   name: name,
                   photo: mvedata.poster_path,
                   title: title,

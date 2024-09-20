@@ -332,9 +332,12 @@ a {
   margin-top:5%;
   width: fit-content;
 }
-
-.prevbookdata{
+.prevbookitems{
   display: flex;
+  justify-content:flex-end;
+}
+.prevbookdata{
+ 
   font-family: "League Spartan", sans-serif;
   padding-top:10px;
   padding-bottom: 10px;
@@ -342,10 +345,21 @@ a {
   padding-right: 30px;;
   margin:auto;
   border: 1px solid black;
+  margin-bottom:10px;
+  border-radius: 20px;;
+}
+.prevbookdatain{
+  display: flex;
+  font-family: "League Spartan", sans-serif;
+  padding-top:10px;
+  padding-bottom: 0px;
+  padding-left: 30px;
+  padding-right: 30px;;
+  margin:auto;
+  
   margin-bottom:20px;
   border-radius: 20px;;
 }
-
 .prevbookdataimg{
   height:150px;
   width:130px;
@@ -358,7 +372,20 @@ a {
   padding-right: 20px;
   margin:50px 0px 50px 20px;
 }
-
+.deleteticket{
+  display: flex;
+  flex-direction:row;
+  border-radius: 5px;
+  border:2px solid black;
+  height:30px;
+}
+.rateticket{
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border:2px solid black;
+  height: 30px;
+}
 
 /* Home Page */
 
