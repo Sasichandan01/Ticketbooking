@@ -5,8 +5,6 @@ import "react-multi-carousel/lib/styles.css";
 function Reviews(props) {
   const id = props.id;
   const [review, setReview] = useState(null);
-  const [found, setNotFound] = useState(null);
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1200 },
@@ -32,7 +30,7 @@ function Reviews(props) {
       .then((data) => setReview(data.results))
 
       .catch((err) => {
-        setNotFound(true);
+         console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

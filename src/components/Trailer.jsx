@@ -4,7 +4,7 @@ export default function Trailer(props) {
   const id = props.id;
 
   const [trailer, setTrailer] = useState(null);
-  const [found, setNotFound] = useState(null);
+ 
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
@@ -13,7 +13,8 @@ export default function Trailer(props) {
       .then((data) => setTrailer(data.results))
 
       .catch((err) => {
-        setNotFound(true);
+        console.log(err);
+        
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

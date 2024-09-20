@@ -53,8 +53,6 @@ function Ticket() {
 
   const [movie, setmovieData] = useState([]);
   const [cost, setCost] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [found, setNotFound] = useState(null);
   const [credits, setCredits] = useState(null);
   const [activebutton, setactive] = useState(null);
   const [activeb, setactiveb] = useState(null);
@@ -77,7 +75,7 @@ function Ticket() {
       .then((data) => setmovieData(data))
 
       .catch((err) => {
-        setNotFound(true);
+        console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -90,7 +88,7 @@ function Ticket() {
       .then((data) => setCredits(data.cast))
 
       .catch((err) => {
-        setNotFound(true);
+         console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
