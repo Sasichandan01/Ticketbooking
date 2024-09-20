@@ -61,7 +61,7 @@ function PreviousBookings() {
 
       setCentredModal(0);
 
-      console.log(response);
+      
       if (response.ok) {
       }
     } catch (err) {
