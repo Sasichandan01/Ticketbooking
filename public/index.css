@@ -216,7 +216,6 @@ a {
   flex-wrap: wrap;
 }
 
-
 /* Navbar */
 
 .container-fluid {
@@ -293,7 +292,6 @@ a {
 }
 .gfg-details button {
   border: 0.5px;
-  
 }
 .gfg-details1 button {
   border: 0.5px;
@@ -311,82 +309,100 @@ a {
 
 /* PreviousBookings */
 
-.prevbook{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.prevbook {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-style: italic;
   width: 40%;
   text-align: center;
-  margin:auto;
-  padding-top:10px;
+  margin: auto;
+  padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 60px;
   padding-right: 60px;
-  border:1px solid black;
-  margin-top: 50px;;
-  border-radius: 20px;;
+  border: 1px solid black;
+  margin-top: 50px;
+  border-radius: 20px;
 }
-.prevtable{
-  
+.prevtable {
   margin-left: auto;
   margin-right: auto;
-  margin-top:5%;
+  margin-top: 5%;
   width: fit-content;
 }
-.prevbookitems{
+.prevbookitems {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
-.prevbookdata{
- 
-  font-family: "League Spartan", sans-serif;
-  padding-top:10px;
+.prevbookdata {
+  padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;;
-  margin:auto;
+  padding-left: 20px;
+  padding-right: 30px;
+  margin: auto;
   border: 1px solid black;
-  margin-bottom:10px;
-  border-radius: 20px;;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
-.prevbookdatain{
+.prevbookdatain {
   display: flex;
-  font-family: "League Spartan", sans-serif;
-  padding-top:10px;
+  font-family: "Encode Sans SC", sans-serif;
+  padding-top: 10px;
   padding-bottom: 0px;
-  padding-left: 30px;
-  padding-right: 30px;;
-  margin:auto;
-  
-  margin-bottom:20px;
-  border-radius: 20px;;
+  padding-left: 20px;
+  padding-right: 30px;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
-.prevbookdataimg{
-  height:150px;
-  width:130px;
-  margin:50px 20px 50px 20px;
+.prevbookdataimg {
+  height: 170px;
+  width: 170px;
+  margin: 30px 20px 30px 0px;
   border-radius: 10px;
 }
 
-.prevbookdetails{
-  width:100%;
+.prevbookdetails {
+  width: 100%;
   padding-right: 20px;
-  margin:50px 0px 50px 20px;
+  margin: 30px 0px 30px 20px;
 }
-.deleteticket{
-  display: flex;
-  flex-direction:row;
+.deleteticket {
   border-radius: 5px;
-  border:2px solid black;
-  height:30px;
+  border: 1px solid black;
+  border-radius: 5%;
+  height: fit-content;
+  padding: 2%;
+  background-color: #44f8d8;
 }
-.rateticket{
+.rateticket {
   display: flex;
   flex-direction: row;
-  border-radius: 5px;
-  border:2px solid black;
-  height: 30px;
-}
 
+  border: 1px solid black;
+  border-radius: 5%;
+  height: fit-content;
+  padding: 2%;
+  background-color: #44f8d8;
+}
+.rateticket p {
+  margin-bottom: 0px;
+  color: #f84464;
+}
+.modalyes {
+  padding: 5px 10px 5px 10px;
+  border: 1px solid;
+  border-radius: 5%;
+  text-transform: uppercase;
+  background-color: #1abc9c;
+}
+.textarea1 {
+  display: flex;
+  columns: 50;
+  margin: 50px auto;
+  border: 1px solid black;
+}
 /* Home Page */
 
 .latestmovies {
@@ -697,7 +713,7 @@ li {
   height: 40px;
 }
 
-.carousell{
+.carousell {
   overflow: hidden;
 }
 .plotdata {
@@ -714,10 +730,10 @@ li {
   .plot {
     margin-left: 30px;
   }
-  .carousell{
-    margin-left: 10px;;
-    margin-right:10px;
-}
+  .carousell {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 .plot h4 {
   font-family: "Encode Sans SC", sans-serif;
@@ -851,11 +867,10 @@ li {
   border-radius: 10px;
   border: 1px solid black;
   overflow: scroll;
-  
 }
-@media only screen and (max-width:500px){
-  .reviewdata1{
-    width:auto
+@media only screen and (max-width: 500px) {
+  .reviewdata1 {
+    width: auto;
   }
 }
 ::-webkit-scrollbar {
@@ -896,17 +911,16 @@ li {
   overflow-x: auto;
 }
 @media only screen and(max-width:500px) {
-  
-  .videoplayer{
+  .videoplayer {
     height: 200px !important;
-    width:300px !important;
+    width: 300px !important;
     overflow: hidden;
   }
-  .video-name{
+  .video-name {
     height: 250px !important;
-    width:300px !important;
+    width: 300px !important;
   }
-  
+
   #youtube {
     padding: 0;
   }
@@ -1006,7 +1020,7 @@ button {
   align-items: center;
   justify-content: center;
 }
-.seat2{
+.seat2 {
   height: 18px;
   width: 20px;
   margin: 5px;

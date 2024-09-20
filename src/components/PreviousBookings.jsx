@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import react, { useState, useEffect } from "react";
+import react, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
@@ -14,18 +14,20 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
+
 function PreviousBookings() {
   const [users, setUsers] = useState([]);
 
   const location = useLocation();
-
   const name = location.state.name;
   const mail = location.state.mail;
 
   const today = moment().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-  const [review, setreview] = useState("");
+  const [review, setreview] = useState("Review: ");
   const [centredModal, setCentredModal] = useState(false);
+  const [centredModal1, setCentredModal1] = useState(false);
   const [filteredUsers, setFilteredUsers] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://ticketbooking-backend-6152.onrender.com/api/auth")
@@ -59,10 +61,14 @@ function PreviousBookings() {
         }
       );
 
-      setCentredModal(0);
-
-      
       if (response.ok) {
+        console.log(response);
+
+        setreview("Review Submitted Successfully 🎉");
+        setTimeout(() => {
+          setreview("Review: ");
+          setCentredModal(0);
+        }, 2000);
       }
     } catch (err) {
       console.error("Error updating movie:", err);
@@ -94,6 +100,9 @@ function PreviousBookings() {
   const toggleShow = () => {
     setCentredModal(!centredModal);
   };
+  const toggleShow1 = () => {
+    setCentredModal1(!centredModal1);
+  };
   function compareDates1(today, dataDate) {
     if (today < dataDate) {
       return 0;
@@ -113,7 +122,7 @@ function PreviousBookings() {
         <div className="prevtable">
           {filteredUsers &&
             filteredUsers.map((data) => (
-              <div key={data.id} className="prevbookdata">
+              <div key={data._id} className="prevbookdata">
                 <div className="prevbookdatain">
                   <div>
                     <img
@@ -156,18 +165,43 @@ function PreviousBookings() {
                   </div>
                 </div>
                 <div className="prevbookitems">
+                  <MDBModal
+                    tabIndex="-1"
+                    show={centredModal1}
+                    setShow={setCentredModal1}
+                  >
+                    <MDBModalDialog centered size="md">
+                      <MDBModalContent>
+                        <MDBModalHeader>
+                          <MDBModalTitle>
+                            ARE YOU SURE YOU WANT TO CANCEL THE TICKET ?
+                          </MDBModalTitle>
+                        </MDBModalHeader>
+                        <MDBModalBody>
+                          If yes, Payment is processed in 24 hours
+                        </MDBModalBody>
+                        <MDBModalFooter>
+                          <button
+                            className="modalyes"
+                            onClick={() => handleDelete(data._id)}
+                          >
+                            Yes
+                          </button>
+                          <button className="modalyes" onClick={toggleShow1}>
+                            No
+                          </button>
+                        </MDBModalFooter>
+                      </MDBModalContent>
+                    </MDBModalDialog>
+                  </MDBModal>
                   {compareDates1(today, data.date) === 0 && (
-                    <button
-                      className="deleteticket"
-                      onClick={() => handleDelete(data._id)}
-                    >
+                    <button className="deleteticket" onClick={toggleShow1}>
                       <div>
                         <i
-                          className="fa-solid fa-trash"
-                          style={{ color: "grey" }}
+                          className="fa-solid fa-trash "
+                          style={{ color: "#f84464" }}
                         ></i>
                       </div>
-                      <p>&nbsp;Cancel Ticket</p>
                     </button>
                   )}
                   <MDBModal
@@ -184,7 +218,7 @@ function PreviousBookings() {
                         </MDBModalHeader>
                         <MDBModalBody>
                           <textarea
-                            className="textarea"
+                            className="textarea1"
                             rows="6"
                             cols="40"
                             onChange={(e) => setreview(e.target.value)}
@@ -193,12 +227,12 @@ function PreviousBookings() {
                         </MDBModalBody>
                         <MDBModalFooter>
                           <button
-                            className="close"
+                            className="modalyes"
                             onClick={() => handleUpdate(data._id, review)}
                           >
                             Submit
                           </button>
-                          <button className="close" onClick={toggleShow}>
+                          <button className="modalyes" onClick={toggleShow}>
                             Cancel
                           </button>
                         </MDBModalFooter>
@@ -209,8 +243,8 @@ function PreviousBookings() {
                     <button className="rateticket" onClick={toggleShow}>
                       <div>
                         <i
-                          class="fa-solid fa-magnifying-glass"
-                          style={{ color: "grey" }}
+                          className="fa-solid fa-magnifying-glass"
+                          style={{ color: "#f84464" }}
                         ></i>
                       </div>
                       <p>&nbsp; Add Review</p>

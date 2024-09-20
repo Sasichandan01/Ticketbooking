@@ -2,7 +2,7 @@ const cities = [
   { name: "Vishakapatnam" },
   { name: "Hyderabad" },
   { name: "Chennai" },
-  { name: "Bhubaneshwar"},
+  { name: "Bhubaneshwar" },
   { name: "Bangalore" },
   { name: "Mumbai" },
   { name: "Kolkata" },

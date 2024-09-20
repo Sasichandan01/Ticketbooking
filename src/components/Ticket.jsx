@@ -16,8 +16,7 @@ function Ticket() {
   const mail = location.state.mail;
   const city = location.state.city;
   const year = location.state.year;
-  
-  
+
   var days = [
     {
       id: 0,
@@ -59,7 +58,6 @@ function Ticket() {
   const [credits, setCredits] = useState(null);
   const [activebutton, setactive] = useState(null);
   const [activeb, setactiveb] = useState(null);
-  
 
   function handlecost(data) {
     setCost(data);
@@ -81,9 +79,9 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
- 
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${mvedata.id}/credits?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
@@ -94,10 +92,8 @@ function Ticket() {
       .catch((err) => {
         setNotFound(true);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -108,7 +104,7 @@ function Ticket() {
   if (credits !== null) {
     credit = credits.slice(0, 6);
   }
-  
+
   var num = 0;
 
   if (movie.imdbVotes !== undefined) {
@@ -118,8 +114,7 @@ function Ticket() {
       }
     }
   }
- 
-  
+
   var imdb = "N/A";
   var num3 = parseInt(mvedata.vote_average);
   imdb = movie.imdbRating === "N/A" ? num3 : movie.imdbRating;
@@ -140,8 +135,7 @@ function Ticket() {
     movie.Plot?.length >= mvedata.overview?.length
       ? movie.Plot
       : mvedata.overview;
-  
-  
+
   return (
     <>
       <div className="movie">
@@ -260,7 +254,7 @@ function Ticket() {
                 state={{
                   data: activeb,
                   cost: cost,
-                  date:activebutton,
+                  date: activebutton,
                   name: name,
                   photo: mvedata.poster_path,
                   title: title,
@@ -331,7 +325,8 @@ function Ticket() {
                     <div className="a1234">
                       <a
                         href={`https://en.wikipedia.org/wiki/${c?.name}`}
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <button className="castbutton">
                           <i class="fa-brands fa-wikipedia-w"></i>
@@ -342,7 +337,8 @@ function Ticket() {
                     <div className="a1234">
                       <a
                         href={`https://www.google.com/search?q=${c?.name}`}
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <button className="castbutton">
                           <i class="fa-brands fa-google"></i>
@@ -353,12 +349,19 @@ function Ticket() {
                 </div>
 
                 <div>
-                  <p style={{ marginTop: "10px",width:"150px",overflow:"hidden"}}>{c?.name}</p>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      width: "150px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {c?.name}
+                  </p>
                 </div>
               </div>
             ))}
         </div>
-       
       </div>
       <div className="plot">
         <h4>
@@ -384,7 +387,8 @@ function Ticket() {
             <div className="a1234">
               <a
                 href={`https://en.wikipedia.org/wiki/${movie.Director}`}
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 <button className="castbutton">
                   <i class="fa-brands fa-wikipedia-w"></i>
@@ -395,7 +399,8 @@ function Ticket() {
             <div className="a1234">
               <a
                 href={`https://www.google.com/search?q=${movie.Director}`}
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 <button className="castbutton">
                   <i class="fa-brands fa-google"></i>
@@ -406,10 +411,9 @@ function Ticket() {
         </div>
         <p style={{ marginTop: "10px" }}>{movie.Director}</p>
       </div>
-      
-        <Reviews id={mvedata.id} />
-        <Trailer id={mvedata.id}/>
-      
+
+      <Reviews id={mvedata.id} />
+      <Trailer id={mvedata.id} />
     </>
   );
 }

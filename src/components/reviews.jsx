@@ -7,7 +7,6 @@ function Reviews(props) {
   const [review, setReview] = useState(null);
   const [found, setNotFound] = useState(null);
 
- 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1200 },
@@ -25,19 +24,19 @@ function Reviews(props) {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-   useEffect(() => {
-     fetch(
-       `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
-     )
-       .then((res) => res.json())
-       .then((data) => setReview(data.results))
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
+    )
+      .then((res) => res.json())
+      .then((data) => setReview(data.results))
 
-       .catch((err) => {
-         setNotFound(true);
-       });
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
- 
+      .catch((err) => {
+        setNotFound(true);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <div className="plot" id="plott">

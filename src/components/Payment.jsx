@@ -32,7 +32,6 @@ function Payment() {
   const mail = location.state.mail;
   const city = location.state.city;
 
-
   const [activeb, setactiveb] = useState(null);
   const [app, setApp] = useState(null);
   const [centredModal, setCentredModal] = useState(false);
@@ -43,7 +42,7 @@ function Payment() {
   const toaster = useRef();
   var num = cost / count;
   var num1 = cost + 10;
-  const review="review";
+  const review = "@" + name + "'s review";
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -51,9 +50,7 @@ function Payment() {
   function handleselect(data) {
     setactiveb(data);
   }
-     const removeToast =()=> {
-       addToast(0);
-     };
+
   const details = {
     name,
     mail,
@@ -65,12 +62,12 @@ function Payment() {
     count,
     cost,
     theater,
-    review
+    review,
   };
   const handlepayment = async () => {
     addToast(exampleToast);
-    setCentredModal(!centredModal)
-    
+    setCentredModal(!centredModal);
+
     try {
       const response = await fetch(
         `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
@@ -82,18 +79,17 @@ function Payment() {
           body: JSON.stringify(details),
         }
       );
-    //   try {
-    //   const response = await fetch(`http://localhost:5000/api/auth/contact`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(details),
-    //   });
-      
+
+      // const response = await fetch(`http://localhost:5000/api/auth/contact`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(details),
+      // });
+
       addToast(0);
       setCentredModal1(!centredModal1);
-
     } catch (err) {
       console.log(err);
     }
@@ -342,7 +338,7 @@ function Payment() {
                               mail: mail,
                               city: city,
                               number: number,
-                              review:review
+                              review: review,
                             }}
                             to="success"
                           >

@@ -12,6 +12,7 @@ function Home() {
   const city = location.state.city;
   const [count, setCount] = useState(0);
   const [movie, setMovie] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [found, setNotFound] = useState(null);
   const [datatip, settip] = useState(null);
 

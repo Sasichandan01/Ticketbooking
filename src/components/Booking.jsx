@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -14,12 +14,11 @@ function Booking(props) {
   const photo = location.state.photo;
   const title = location.state.title;
   const city = location.state.city;
-  const mvedata=location.state.mvedata;
+  const mvedata = location.state.mvedata;
   var c = parseInt(cost);
 
   const [count, setCount] = useState([0, false]);
   const [activeb, setactiveb] = useState(null);
- 
 
   var timings = [
     { value: "11", name: "11:00 " },
@@ -29,8 +28,6 @@ function Booking(props) {
     { value: "24", name: "22:00 " },
   ];
 
- 
-  
   useEffect(() => {
     AOS.init({
       duration: 1000,
