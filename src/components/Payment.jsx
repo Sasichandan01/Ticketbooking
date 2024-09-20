@@ -71,18 +71,7 @@ function Payment() {
     addToast(exampleToast);
     setCentredModal(!centredModal)
     
-    // try {
-    //   const response = await fetch(
-    //     `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(details),
-    //     }
-    //   );
-      try {
+    try {
       const response = await fetch(
         `https://ticketbooking-backend-6152.onrender.com/api/auth/contact`,
         {
@@ -93,6 +82,14 @@ function Payment() {
           body: JSON.stringify(details),
         }
       );
+    //   try {
+    //   const response = await fetch(`http://localhost:5000/api/auth/contact`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(details),
+    //   });
       
       addToast(0);
       setCentredModal1(!centredModal1);
