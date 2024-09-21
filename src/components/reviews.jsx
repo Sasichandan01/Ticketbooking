@@ -9,17 +9,17 @@ function Reviews(props) {
     desktop: {
       breakpoint: { max: 3000, min: 1200 },
       items: 3,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1, 
     },
     tablet: {
       breakpoint: { max: 1200, min: 860 },
       items: 2,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1, 
     },
     mobile: {
       breakpoint: { max: 860, min: 0 },
       items: 1,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1, 
     },
   };
   useEffect(() => {
@@ -30,7 +30,7 @@ function Reviews(props) {
       .then((data) => setReview(data.results))
 
       .catch((err) => {
-         console.log(err);
+        console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -65,7 +65,7 @@ function Reviews(props) {
         >
           {review !== null &&
             review.map((data) => (
-              <div className="reviewdata1" key={data.key}>
+              <div className="reviewdata1" key={data.id}>
                 <div
                   style={{
                     display: "flex",

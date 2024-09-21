@@ -71,6 +71,7 @@ function Booking(props) {
         {timings.map((data) => (
           <button
             type="button"
+            key={data.name}
             name={data.name}
             value={data.value}
             id={activeb === data.name ? "timebuttonid" : "timebutton"}
