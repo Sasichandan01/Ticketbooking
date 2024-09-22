@@ -5,7 +5,6 @@ import "aos/dist/aos.css";
 
 function Movie(props) {
   
-
   useEffect(() => {
     AOS.init({
       duration: 1000,

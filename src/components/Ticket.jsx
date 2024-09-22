@@ -9,7 +9,6 @@ function Ticket() {
   const img_300 = "https://image.tmdb.org/t/p/w300";
 
   const location = useLocation();
-
   const name = location.state.name;
   const mvedata = location.state.data;
   const title = location.state.title;

@@ -12,8 +12,6 @@ function Home() {
   const city = location.state.city;
   const [count, setCount] = useState(0);
   const [movie, setMovie] = useState([]);
-  // eslint-disable-next-line no-unused-vars
-  const [found, setNotFound] = useState(null);
   const [datatip, settip] = useState(null);
 
   useEffect(() => {
@@ -24,19 +22,18 @@ function Home() {
       .then((data) => setMovie(data.results))
 
       .catch((err) => {
-        setNotFound(true);
+        
       });
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   var sortedmovies = [...movie].sort((p1, p2) =>
     p1.title > p2.title ? 1 : p1.title < p2.title ? -1 : 0
   );
-  
+
   var releasedmovie = [...movie].sort((p1, p2) =>
     p1.release_date < p2.release_date
       ? 1
@@ -57,6 +54,9 @@ function Home() {
       settip("Sort by Popularity");
     }
   }
+  function untool() {
+    settip("");
+  }
 
   return (
     <>
@@ -72,7 +72,11 @@ function Home() {
             data-tooltip-content={datatip}
             data-tooltip-place="top"
           >
-            <button onMouseEnter={tool} onClick={handleClick}>
+            <button
+              onMouseEnter={tool}
+              onMouseLeave={untool}
+              onClick={handleClick}
+            >
               <i class="fa-solid fa-sort"></i>
             </button>
           </a>
@@ -106,6 +110,7 @@ function Home() {
               mail={mail}
               city={city}
               id={data.id}
+              key={data.id}
               tmdata={data}
               year={data.release_date}
               release={data.release_date}
@@ -124,6 +129,7 @@ function Home() {
               city={city}
               year={data.release_date}
               id={data.id}
+              key={data.id}
               tmdata={data}
               release={data.release_date}
               title={data.title}

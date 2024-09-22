@@ -45,7 +45,7 @@ export default function Trailer(props) {
                     className="videoplayer"
                     videoId={data.key}
                     key={data.key}
-                    title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
+                    title=""
                   />
                 </div>
               </div>

@@ -291,7 +291,7 @@ function Payment() {
         </MDBModal>
 
         <MDBModal
-          backdrop={false}
+          
           tabIndex="-1"
           show={centredModal1}
           setShow={setCentredModal1}
