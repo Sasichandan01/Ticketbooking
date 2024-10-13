@@ -19,8 +19,8 @@ import {
 } from "mdb-react-ui-kit";
 
 function Payment() {
-  const localhost = "http://localhost:5000/api/auth";
-  const backend = "https://ticketbooking-backend-6152.onrender.com/api/auth";
+  const localhost = "http://localhost:5000/api/ticket";
+  const backend = "https://ticketbooking-backend-6152.onrender.com/api/ticket";
   const location = useLocation();
 
   const cost = location.state.totalcost;
@@ -71,7 +71,7 @@ function Payment() {
     setCentredModal(!centredModal);
 
     try {
-      const response = await fetch(`${backend}/contact`, {
+      const response = await fetch(`${localhost}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

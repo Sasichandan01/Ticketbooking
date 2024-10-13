@@ -10,7 +10,7 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from "mdb-react-ui-kit";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation,useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
 export default function Nav() {
@@ -23,7 +23,11 @@ export default function Nav() {
   const [cityy, setCityy] = useState(false);
   const toggleShow1 = () => setCityy(!cityy);
 
- 
+  const navigate=useNavigate();
+ async function handlelogout(){
+   localStorage.removeItem("token");
+   navigate("/");
+ }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark ">
@@ -129,11 +133,11 @@ export default function Nav() {
                           </div>
                           
                           <div className="gfg-details">
-                            <a href="/">
-                              <button>
+                           
+                              <button onClick={handlelogout}>
                                 <strong>Log Out</strong>
                               </button>
-                            </a>
+                           
                           </div>
                         </div>
                       </div>

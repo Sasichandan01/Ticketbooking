@@ -31,13 +31,15 @@ a {
   -moz-perspective: 1000px;
   perspective: 1000px;
   position: absolute;
-
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
+#login h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
 .login {
   font-family: "Josefin Sans", sans-serif;
   -webkit-transition: 1s;
@@ -110,7 +112,36 @@ a {
   border-right-style: none;
   border-right-width: medium;
 }
+#noaccount {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: medium;
+}
+.errcontact {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
 /* City */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}
+.toast-single-line {
+  white-space: wrap;
+  
+}
+.toast-container .d-flex{
+  display: flex;
+  flex-wrap: nowrap;
+  width:90%;
+}
+.toast-container .d-flex button{
+  position: absolute;
+  top:30%;
+  right:10px
+}
 
 .city-form {
   display: flex;
@@ -249,7 +280,6 @@ a {
 
 .data-container {
   background-color: #fff;
-
   border-radius: 5px;
   font-size: 14px;
   margin: 0 30px 0 10px;
@@ -460,7 +490,7 @@ figure img {
 }
 figure figcaption {
   position: absolute;
-  bottom:-100%;
+  bottom: -100%;
   left: 0;
   width: 100%;
   margin: 0;

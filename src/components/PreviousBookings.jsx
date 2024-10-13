@@ -19,8 +19,8 @@ function PreviousBookings() {
   const location = useLocation();
   const name = location.state.name;
   const mail = location.state.mail;
-  const localhost = "http://localhost:5000/api/auth";
-  const backend = "https://ticketbooking-backend-6152.onrender.com/api/auth";
+  const localhost = "http://localhost:5000/api/ticket";
+  const backend = "https://ticketbooking-backend-6152.onrender.com/api/ticket";
   const today = moment().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
   const [review, setreview] = useState("Review: ");
   const [users, setUsers] = useState([]);
@@ -30,7 +30,7 @@ function PreviousBookings() {
 
   useEffect(() => {
     axios
-      .get(`${backend}`, {
+      .get(`${localhost}`, {
         params: {
           name: name,
           mail: mail,
@@ -50,7 +50,7 @@ function PreviousBookings() {
   const handleUpdate = async (movieId, review) => {
     try {
       const response = await fetch(
-        `${backend}/${movieId}`,
+        `${localhost}/${movieId}`,
         {
           method: "PUT",
           headers: {
@@ -78,7 +78,7 @@ function PreviousBookings() {
 
   const handleDelete = async (movieId) => {
     try {
-      const response = await fetch(`${backend}/${movieId}`, {
+      const response = await fetch(`${localhost}/${movieId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
