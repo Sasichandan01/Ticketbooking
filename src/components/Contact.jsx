@@ -95,7 +95,7 @@ function App() {
         );
       }
     } catch (err) {
-      console.error("Error during signup:", err);
+      
       setError(
         err.response.data.message || "An error occurred. Please try again."
       );
