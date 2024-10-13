@@ -19,10 +19,9 @@ import {
 } from "mdb-react-ui-kit";
 
 function Payment() {
-  const localhost = process.env.localhost2;
-  const backend = process.env.backend2;
+  const localhost = process.env.REACT_APP_LOCALHOST2;
+  const backend = process.env.REACT_APP_BACKEND2;
   const location = useLocation();
-
   const cost = location.state.totalcost;
   const count = location.state.counts;
   const theater = location.state.theatre;

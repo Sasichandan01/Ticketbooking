@@ -19,8 +19,8 @@ function PreviousBookings() {
   const location = useLocation();
   const name = location.state.name;
   const mail = location.state.mail;
-  const localhost = process.env.localhost2;
-  const backend = process.env.backend2;
+  const localhost = process.env.REACT_APP_LOCALHOST2;
+  const backend = process.env.REACT_APP_BACKEND2;
   const today = moment().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
   const [review, setreview] = useState("Review: ");
   const [users, setUsers] = useState([]);

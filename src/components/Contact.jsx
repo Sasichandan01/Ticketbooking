@@ -13,9 +13,9 @@ function App() {
   const [jwtmail, setjwtmail] = useState("");
   const jwttoken = localStorage.getItem("token");
 
-  const localhost = process.env.localhost1;
-  const backend = process.env.backend1;
-
+  const localhost = process.env.REACT_APP_LOCALHOST1;
+  const backend = process.env.REACT_APP_BACKEND1;
+ 
   const navigate = useNavigate();
 
   function handlebutton() {
@@ -62,6 +62,8 @@ function App() {
       });
     }
   }, [jwtmail, jwtname, navigate, jwttoken]);
+
+
   async function handlesignup(e) {
     e.preventDefault();
     setError("");
@@ -76,7 +78,8 @@ function App() {
         email: email,
         password: password,
       });
-
+    console.log(response);
+    
       if (response.data.success) {
         navigate("/home", {
           state: {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -13,10 +14,10 @@ function Home() {
   const [count, setCount] = useState(0);
   const [movie, setMovie] = useState([]);
   const [datatip, settip] = useState(null);
-
+  const tmdb_api_key=process.env.REACT_APP_tmdb_api_key;
   useEffect(() => {
     fetch(
-      ` https://api.themoviedb.org/3/discover/movie?api_key=bee8ce9f0d5a33ee50837d31a61a64eb&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&release_date.gte=2023-06-01T00:00:00.000Z&page=1`
+      ` https://api.themoviedb.org/3/discover/movie?api_key=${tmdb_api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&release_date.gte=2023-06-01T00:00:00.000Z&page=1`
     )
       .then((res) => res.json())
       .then((data) => setMovie(data.results))

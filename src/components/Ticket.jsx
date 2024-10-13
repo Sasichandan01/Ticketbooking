@@ -15,7 +15,8 @@ function Ticket() {
   const mail = location.state.mail;
   const city = location.state.city;
   const year = location.state.year;
-
+  const tmdb_api_key = process.env.REACT_APP_tmdb_api_key;
+  const omdb_api_key=process.env.REACT_APP_omdb_api_key;
   var days = [
     {
       id: 0,
@@ -68,7 +69,7 @@ function Ticket() {
 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?t=${title}&y=${year}&plot=full&apikey=961ea94b`
+      `https://www.omdbapi.com/?t=${title}&y=${year}&plot=full&apikey=${omdb_api_key}`
     )
       .then((res) => res.json())
       .then((data) => setmovieData(data))
@@ -81,13 +82,13 @@ function Ticket() {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${mvedata.id}/credits?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
+      `https://api.themoviedb.org/3/movie/${mvedata.id}/credits?api_key=${tmdb_api_key}`
     )
       .then((res) => res.json())
       .then((data) => setCredits(data.cast))
 
       .catch((err) => {
-         console.log(err);
+        console.log(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

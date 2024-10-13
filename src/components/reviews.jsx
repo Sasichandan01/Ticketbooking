@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 function Reviews(props) {
   const id = props.id;
   const [review, setReview] = useState(null);
+  const tmdb_api_key = process.env.REACT_APP_tmdb_api_key;
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1200 },
@@ -24,7 +25,7 @@ function Reviews(props) {
   };
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=bee8ce9f0d5a33ee50837d31a61a64eb`
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${tmdb_api_key}`
     )
       .then((res) => res.json())
       .then((data) => setReview(data.results))
