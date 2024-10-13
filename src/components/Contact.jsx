@@ -124,6 +124,7 @@ function App() {
             newuser: false,
           },
         });
+        localStorage.setItem("token", response.data.user.token);
       } else {
         setError(response.data.message || "Login failed. Please try again.");
       }
