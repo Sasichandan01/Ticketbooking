@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +12,10 @@ function App() {
   const [jwtname, setjwtname] = useState("");
   const [jwtmail, setjwtmail] = useState("");
   const jwttoken = localStorage.getItem("token");
-  console.log(jwttoken);
 
-  // const localhost = "http://localhost:5000/api/user";
-  const backend = "https://ticketbooking-backend-6152.onrender.com/api/user";
+
+  const localhost = process.env.localhost1;
+  const backend = process.env.backend1;
 
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${backend}/usertoken`, {
+        const response = await fetch(`${localhost}/usertoken`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwttoken}`,
@@ -48,6 +49,7 @@ function App() {
     if (jwttoken) {
       fetchUser();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jwttoken]);
 
   useEffect(() => {
@@ -70,7 +72,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`${backend}/signup`, {
+      const response = await axios.post(`${localhost}/signup`, {
         name: username,
         email: email,
         password: password,
@@ -105,7 +107,7 @@ function App() {
       return;
     }
     try {
-      const response = await axios.get(`${backend}/login`, {
+      const response = await axios.get(`${localhost}/login`, {
         params: {
           email: email,
           password: password,
