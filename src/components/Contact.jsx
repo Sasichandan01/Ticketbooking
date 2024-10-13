@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${localhost}/usertoken`, {
+        const response = await fetch(`${backend}/usertoken`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwttoken}`,
@@ -72,7 +72,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`${localhost}/signup`, {
+      const response = await axios.post(`${backend}/signup`, {
         name: username,
         email: email,
         password: password,
@@ -107,7 +107,7 @@ function App() {
       return;
     }
     try {
-      const response = await axios.get(`${localhost}/login`, {
+      const response = await axios.get(`${backend}/login`, {
         params: {
           email: email,
           password: password,

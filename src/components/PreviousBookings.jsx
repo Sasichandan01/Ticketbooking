@@ -30,7 +30,7 @@ function PreviousBookings() {
 
   useEffect(() => {
     axios
-      .get(`${localhost}`, {
+      .get(`${backend}`, {
         params: {
           name: name,
           mail: mail,
@@ -50,7 +50,7 @@ function PreviousBookings() {
   const handleUpdate = async (movieId, review) => {
     try {
       const response = await fetch(
-        `${localhost}/${movieId}`,
+        `${backend}/${movieId}`,
         {
           method: "PUT",
           headers: {
@@ -78,7 +78,7 @@ function PreviousBookings() {
 
   const handleDelete = async (movieId) => {
     try {
-      const response = await fetch(`${localhost}/${movieId}`, {
+      const response = await fetch(`${backend}/${movieId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
