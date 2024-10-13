@@ -71,7 +71,7 @@ function Payment() {
     setCentredModal(!centredModal);
 
     try {
-      const response = await fetch(`${localhost}/contact`, {
+      const response = await fetch(`${backend}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

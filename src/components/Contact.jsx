@@ -13,8 +13,8 @@ function App() {
   const jwttoken = localStorage.getItem("token");
   console.log(jwttoken);
 
-  const localhost = "http://localhost:5000/api/user";
-  //const backend = "https://ticketbooking-backend-6152.onrender.com/api/user";
+ // const localhost = "http://localhost:5000/api/user";
+  const backend = "https://ticketbooking-backend-6152.onrender.com/api/user";
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${localhost}/usertoken`, {
+        const response = await fetch(`${backend}/usertoken`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwttoken}`,
@@ -70,7 +70,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`${localhost}/signup`, {
+      const response = await axios.post(`${backend}/signup`, {
         name: username,
         email: email,
         password: password,
@@ -102,7 +102,7 @@ function App() {
     setError("");
 
     try {
-      const response = await axios.get(`${localhost}/login`, {
+      const response = await axios.get(`${backend}/login`, {
         params: {
           email: email,
           password: password,
