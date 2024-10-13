@@ -13,7 +13,7 @@ function App() {
   const jwttoken = localStorage.getItem("token");
   console.log(jwttoken);
 
- // const localhost = "http://localhost:5000/api/user";
+  // const localhost = "http://localhost:5000/api/user";
   const backend = "https://ticketbooking-backend-6152.onrender.com/api/user";
 
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ function App() {
         state: {
           name: jwtname,
           mail: jwtmail,
-          newuser:false
+          newuser: false,
         },
       });
     }
@@ -81,7 +81,7 @@ function App() {
           state: {
             name: response.data.user.name,
             mail: response.data.user.email,
-            newuser:true
+            newuser: true,
           },
         });
         localStorage.setItem("token", response.data.user.token);
@@ -91,16 +91,19 @@ function App() {
         );
       }
     } catch (err) {
-      console.error("Error during signup/login:", err);
+      console.error("Error during signup:", err);
       setError(
-        err.response?.data?.message || "An error occurred. Please try again."
+        err.response.data.message || "An error occurred. Please try again."
       );
     }
   }
   async function handlelogin(e) {
     e.preventDefault();
     setError("");
-
+    if (password.length < 8) {
+      setError("Password must contain atleast 8 characters");
+      return;
+    }
     try {
       const response = await axios.get(`${backend}/login`, {
         params: {
@@ -114,7 +117,7 @@ function App() {
           state: {
             name: response.data.user.name,
             mail: response.data.user.email,
-            newuser:false
+            newuser: false,
           },
         });
       } else {
@@ -122,7 +125,7 @@ function App() {
       }
     } catch (err) {
       setError(
-        err.response?.data?.message ||
+        err.response.data.message ||
           "An error occurred during login. Please try again."
       );
     }
