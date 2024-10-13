@@ -19,8 +19,8 @@ import {
 } from "mdb-react-ui-kit";
 
 function Payment() {
-   const localhost = process.env.localhost2;
-   const backend = process.env.backend2;
+  const localhost = process.env.localhost2;
+  const backend = process.env.backend2;
   const location = useLocation();
 
   const cost = location.state.totalcost;
@@ -290,12 +290,7 @@ function Payment() {
           </MDBModalDialog>
         </MDBModal>
 
-        <MDBModal
-          
-          tabIndex="-1"
-          show={centredModal1}
-          setShow={setCentredModal1}
-        >
+        <MDBModal tabIndex="-1" show={centredModal1} setShow={setCentredModal1}>
           <MDBModalDialog top size="md">
             <MDBModalContent>
               <MDBModalHeader>

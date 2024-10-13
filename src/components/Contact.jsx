@@ -13,7 +13,6 @@ function App() {
   const [jwtmail, setjwtmail] = useState("");
   const jwttoken = localStorage.getItem("token");
 
-
   const localhost = process.env.localhost1;
   const backend = process.env.backend1;
 

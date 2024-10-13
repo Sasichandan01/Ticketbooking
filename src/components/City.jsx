@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import cities from "../cities";
 import { Link, useLocation } from "react-router-dom";
 import { Toast } from "bootstrap";
@@ -7,20 +7,17 @@ export default function Ticket() {
 
   const name = location.state.name;
   const mail = location.state.mail;
-  const newuser=location.state.newuser;
-  console.log(newuser);
-  
+  const newuser = location.state.newuser;
+
   const [city, setCity] = React.useState("");
   function click(event) {
     setCity(event.target.value);
   }
-useEffect(() => {
-
+  useEffect(() => {
     const toastElement = document.getElementById("welcomeToast");
     const toast = new Toast(toastElement);
     toast.show();
-  
-}, [newuser]);
+  }, [newuser]);
   return (
     <>
       <div className="toast-container">
