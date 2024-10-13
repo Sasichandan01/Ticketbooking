@@ -78,14 +78,14 @@ function App() {
         email: email,
         password: password,
       });
-    console.log(response);
+  
     
       if (response.data.success) {
         navigate("/home", {
           state: {
             name: response.data.user.name,
             mail: response.data.user.email,
-            newuser: true,
+            newuser: response.data.user.newuser,
           },
         });
         localStorage.setItem("token", response.data.user.token);
