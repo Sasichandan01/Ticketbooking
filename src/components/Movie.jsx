@@ -18,8 +18,6 @@ function Movie(props) {
       <figure className="image-block">
         <img
           src={`https://image.tmdb.org/t/p/w300/` + props.poster}
-          width="250"
-          height="300"
           loading="lazy"
           alt=""
         />

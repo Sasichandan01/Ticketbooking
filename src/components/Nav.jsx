@@ -26,6 +26,7 @@ export default function Nav() {
   const navigate=useNavigate();
  async function handlelogout(){
    localStorage.removeItem("token");
+   localStorage.removeItem("google_access_token");
    navigate("/");
  }
   return (
@@ -36,7 +37,7 @@ export default function Nav() {
             <Link
               className="navbar-brand mt-2 mt-lg-0"
               state={{ name: name, city: city, mail: mail }}
-              to={`/home`}
+              to={`/${city}/movie`}
             >
               FlixBooking
             </Link>
@@ -131,13 +132,11 @@ export default function Nav() {
                             </p>
                             <p> {mail}</p>
                           </div>
-                          
+
                           <div className="gfg-details">
-                           
-                              <button onClick={handlelogout}>
-                                <strong>Log Out</strong>
-                              </button>
-                           
+                            <button onClick={handlelogout}>
+                              <strong>Log Out</strong>
+                            </button>
                           </div>
                         </div>
                       </div>

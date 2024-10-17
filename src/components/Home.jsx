@@ -25,7 +25,7 @@ function Home() {
       .catch((err) => {
         
       });
-  }, []);
+  },[count]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
