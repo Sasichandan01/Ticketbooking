@@ -12,10 +12,10 @@ function App() {
   const [jwtname, setjwtname] = useState("");
   const [jwtmail, setjwtmail] = useState("");
   const jwttoken = localStorage.getItem("token");
-  const google_client_id = process.env.REACT_APP_CLIENT_ID;
+  //const google_client_id = process.env.REACT_APP_CLIENT_ID;
   const localhost = process.env.REACT_APP_LOCALHOST1;
   const backend = process.env.REACT_APP_BACKEND1;
-  const redirect_url = process.env.REACT_APP_LOCALHOST1;
+  //const redirect_url = process.env.REACT_APP_LOCALHOST1;
   const navigate = useNavigate();
 
   function handlebutton() {
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${localhost}/usertoken`, {
+        const response = await fetch(`${backend}/usertoken`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwttoken}`,
@@ -89,7 +89,7 @@ function App() {
 
     try {
       setError("Loading, Please Wait .....");
-      const response = await axios.post(`${localhost}/signup`, {
+      const response = await axios.post(`${backend}/signup`, {
         name: username,
         email: email,
         password: password,
@@ -137,7 +137,7 @@ function App() {
     }
     try {
       setError("Loading, Please Wait .....");
-      const response = await axios.get(`${localhost}/login`, {
+      const response = await axios.get(`${backend}/login`, {
         params: {
           email: email,
           password: password,
