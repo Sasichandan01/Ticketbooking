@@ -130,6 +130,12 @@ a {
 .errcontact p {
   margin-bottom: 0px;
 }
+#forgotbutton{
+  border: 0px;
+  background-color: transparent; 
+   
+  text-decoration: underline;
+}
 /* City */
 .toast-container {
   position: fixed;

@@ -7,6 +7,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newpassword, setnewPassword] = useState("");
   const [signup, setsignup] = useState(0);
   const [error, setError] = useState("");
   const [jwtname, setjwtname] = useState("");
@@ -19,7 +20,15 @@ function App() {
   const navigate = useNavigate();
 
   function handlebutton() {
-    setsignup((signup + 1) % 2);
+    if(signup === 0 || signup===-1) {
+      setsignup(1);
+    }
+    else {
+      setsignup(0);
+    }
+  }
+  function handlebutton1() {
+    setsignup(-1);
   }
   useEffect(() => {
     const fetchUser = async () => {
@@ -57,7 +66,7 @@ function App() {
         state: {
           name: jwtname,
           mail: jwtmail,
-          newuser: false,
+          newuser: 0,
         },
       });
     }
@@ -107,12 +116,12 @@ function App() {
         setError("");
       } else {
         setError(
-          response.data.message || "❌Operation failed. Please try again."
+          response.data.message || "Operation failed. Please try again."
         );
       }
     } catch (err) {
       setError(
-        err.response.data.message || "❌An error occurred. Please try again."
+        err.response.data.message || "An error occurred. Please try again."
       );
     }
   }
@@ -149,18 +158,67 @@ function App() {
           state: {
             name: response.data.user.name,
             mail: response.data.user.email,
-            newuser: false,
+            newuser: 0,
           },
         });
         localStorage.setItem("token", response.data.user.token);
         setError("");
       } else {
-        setError(response.data.message || "❌Login failed. Please try again.");
+        setError(response.data.message || "Login failed. Please try again.");
       }
     } catch (err) {
       setError(
         err.response.data.message ||
-          "❌An error occurred during login. Please try again."
+          "An error occurred during login. Please try again."
+      );
+    }
+  }
+  async function handlenewp(e) {
+    e.preventDefault();
+    setError("");
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if (email.length === 0) {
+      setError("Please enter email");
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password must contain atleast 8 characters");
+      return;
+    }
+    if (password !== newpassword) { 
+      setError("Password and confirm password must be same");
+      return;
+    }
+    try {
+      setError("Loading, Please Wait .....");
+      const response = await axios.put(`${backend}/updatepassword`, {
+        email: email,
+        password: password,
+      });
+
+      if (response.data.success) {
+        navigate("/home", {
+          state: {
+            name: response.data.user.name,
+            mail: response.data.user.email,
+            newuser: -1,
+          },
+        });
+        localStorage.setItem("token", response.data.user.token);
+        setError("");
+      } else {
+        setError(
+          response.data.message || "Updation failed. Please try again."
+        );
+      }
+    } catch (err) {
+      setError(
+        err.response.data.message ||
+          "An error occurred during changing password. Please try again."
       );
     }
   }
@@ -192,6 +250,81 @@ function App() {
   return (
     <div className="mainpage">
       <div className="col-md-4 col-md-offset-4" id="login">
+        {signup === -1 && (
+          <section id="inner-wrapper" className="login">
+            <h1>Flix Booking</h1>
+            <article>
+              <form>
+                <div className="form-group">
+                  <div className="input-group">
+                    <span className="input-group-addon">
+                      <i className="fa fa-envelope"> </i>
+                    </span>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email Address"
+                      name="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    <span className="input-group-addon">
+                      <i className="fa fa-envelope"> </i>
+                    </span>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      name="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    <span className="input-group-addon">
+                      <i className="fa fa-envelope"> </i>
+                    </span>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Confirm Password"
+                      name="password"
+                      onChange={(e) => setnewPassword(e.target.value)}
+                      value={newpassword}
+                    />
+                  </div>
+                </div>{" "}
+                <div id="noaccount">
+                  <div>
+                    <p>No Account?</p>
+                  </div>
+                  <div>
+                    <button
+                      type="submit"
+                      className="btn btn-sm"
+                      onClick={handlebutton}
+                    >
+                      Signup
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-md"
+                  onClick={handlenewp}
+                >
+                  Submit
+                </button>
+              </form>
+            </article>
+          </section>
+        )}
         {signup === 1 && (
           <section id="inner-wrapper" className="login">
             <h1>Flix Booking</h1>
@@ -225,8 +358,6 @@ function App() {
                       name="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                      required
                     />
                   </div>
                 </div>
@@ -288,8 +419,6 @@ function App() {
                       name="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                      required
                     />
                   </div>
                 </div>
@@ -322,7 +451,6 @@ function App() {
                     </button>
                   </div>
                 </div>
-
                 <button
                   type="submit"
                   className="btn btn-primary btn-md"
@@ -330,6 +458,15 @@ function App() {
                 >
                   Login
                 </button>
+                <div id="noaccount">
+                  <button
+                    type="submit"
+                    id="forgotbutton"
+                    onClick={handlebutton1}
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
               </form>
             </article>
           </section>

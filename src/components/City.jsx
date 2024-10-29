@@ -21,7 +21,7 @@ export default function Ticket() {
   return (
     <>
       <div className="toast-container">
-        {!newuser && (
+        {newuser === 0 && (
           <div
             id="welcomeToast"
             className="toast align-items-center text-bg-primary border-0"
@@ -44,7 +44,7 @@ export default function Ticket() {
             </div>
           </div>
         )}
-        {newuser && (
+        {newuser === 1 && (
           <div
             id="welcomeToast"
             className="toast align-items-center text-bg-primary border-0"
@@ -55,6 +55,29 @@ export default function Ticket() {
             <div className="d-flex">
               <div className="toast-body toast-single-line">
                 Hello {name}! Welcome to Flix Booking.
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="btn-close btn-close-white me-2 m-auto"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+          </div>
+        )}
+        {newuser === -1 && (
+          <div
+            id="welcomeToast"
+            className="toast align-items-center text-bg-primary border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div className="d-flex">
+              <div className="toast-body toast-single-line">
+                Welcome back {name}! Password Updated Successfully.
               </div>
               <div>
                 <button
