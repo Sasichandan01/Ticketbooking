@@ -120,6 +120,15 @@ a {
 }
 .errcontact {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: fit-content !important;
+  padding: 15px;
+  background-color: #7c4bde;
+  color: #01ff70;
+  border-radius: 10px;
+  text-align: center;
+}
+.errcontact p {
+  margin-bottom: 0px;
 }
 /* City */
 .toast-container {
@@ -130,17 +139,16 @@ a {
 }
 .toast-single-line {
   white-space: wrap;
-  
 }
-.toast-container .d-flex{
+.toast-container .d-flex {
   display: flex;
   flex-wrap: nowrap;
-  width:90%;
+  width: 90%;
 }
-.toast-container .d-flex button{
+.toast-container .d-flex button {
   position: absolute;
-  top:30%;
-  right:10px
+  top: 30%;
+  right: 10px;
 }
 
 .city-form {

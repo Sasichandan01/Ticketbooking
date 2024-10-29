@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -12,10 +12,10 @@ function App() {
   const [jwtname, setjwtname] = useState("");
   const [jwtmail, setjwtmail] = useState("");
   const jwttoken = localStorage.getItem("token");
-
+  const google_client_id = process.env.REACT_APP_CLIENT_ID;
   const localhost = process.env.REACT_APP_LOCALHOST1;
   const backend = process.env.REACT_APP_BACKEND1;
- 
+  const redirect_url = process.env.REACT_APP_LOCALHOST1;
   const navigate = useNavigate();
 
   function handlebutton() {
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${backend}/usertoken`, {
+        const response = await fetch(`${localhost}/usertoken`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwttoken}`,
@@ -48,7 +48,7 @@ function App() {
     if (jwttoken) {
       fetchUser();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jwttoken]);
 
   useEffect(() => {
@@ -63,23 +63,38 @@ function App() {
     }
   }, [jwtmail, jwtname, navigate, jwttoken]);
 
-
   async function handlesignup(e) {
     e.preventDefault();
     setError("");
+    if (username.length === 0) {
+      setError("Please enter username");
+      return;
+    }
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+    if (email.length === 0) {
+      setError("Please enter email");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
     if (password.length < 8) {
       setError("Password must contain atleast 8 characters");
       return;
     }
 
     try {
-      const response = await axios.post(`${backend}/signup`, {
+      setError("Loading, Please Wait .....");
+      const response = await axios.post(`${localhost}/signup`, {
         name: username,
         email: email,
         password: password,
       });
-  
-    
+
       if (response.data.success) {
         navigate("/home", {
           state: {
@@ -89,27 +104,40 @@ function App() {
           },
         });
         localStorage.setItem("token", response.data.user.token);
+        setError("");
       } else {
         setError(
-          response.data.message || "Operation failed. Please try again."
+          response.data.message || "❌Operation failed. Please try again."
         );
       }
     } catch (err) {
-      
       setError(
-        err.response.data.message || "An error occurred. Please try again."
+        err.response.data.message || "❌An error occurred. Please try again."
       );
     }
   }
   async function handlelogin(e) {
     e.preventDefault();
     setError("");
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+    if (email.length === 0) {
+      setError("Please enter email");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
     if (password.length < 8) {
       setError("Password must contain atleast 8 characters");
       return;
     }
     try {
-      const response = await axios.get(`${backend}/login`, {
+      setError("Loading, Please Wait .....");
+      const response = await axios.get(`${localhost}/login`, {
         params: {
           email: email,
           password: password,
@@ -125,17 +153,42 @@ function App() {
           },
         });
         localStorage.setItem("token", response.data.user.token);
+        setError("");
       } else {
-        setError(response.data.message || "Login failed. Please try again.");
+        setError(response.data.message || "❌Login failed. Please try again.");
       }
     } catch (err) {
       setError(
         err.response.data.message ||
-          "An error occurred during login. Please try again."
+          "❌An error occurred during login. Please try again."
       );
     }
   }
-
+  // const handleSuccess = (response) => {
+  //   const accessToken = response.credential;
+  //   localStorage.setItem("google_access_token", accessToken);
+  //   fetchUserProfile(accessToken);
+  // };
+  // const fetchUserProfile = (token) => {
+  //   fetch(
+  //     `https://accounts.google.com/o/oauth2/v3/userinfo`,
+  //     {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((userData) => {
+  //       console.log("User email:", userData.email);
+  //       console.log("User ID:", userData.sub);
+  //     })
+  //     .catch((error) => console.error("Error fetching user info:", error));
+  // };
+  // const handleFailure = (response) => {
+  //   console.error("Login failed:", response);
+  // };
   return (
     <div className="mainpage">
       <div className="col-md-4 col-md-offset-4" id="login">
@@ -156,6 +209,7 @@ function App() {
                       name="fname"
                       onChange={(e) => setUsername(e.target.value)}
                       value={username}
+                      required
                     />
                   </div>
                 </div>
@@ -283,7 +337,7 @@ function App() {
         {error && (
           <div className="errcontact">
             <p>
-              {"{"}&nbsp;Error:&nbsp;{error}&nbsp;
+              {"{"}&nbsp;Status:&nbsp;{error}&nbsp;
               {"}"}
             </p>
           </div>
