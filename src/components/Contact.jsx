@@ -66,7 +66,7 @@ function App() {
         state: {
           name: jwtname,
           mail: jwtmail,
-          newuser: 0,
+          newuser: 1,
         },
       });
     }
