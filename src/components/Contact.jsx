@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+//import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -158,7 +158,7 @@ function App() {
           state: {
             name: response.data.user.name,
             mail: response.data.user.email,
-            newuser: 0,
+            newuser: 1,
           },
         });
         localStorage.setItem("token", response.data.user.token);
