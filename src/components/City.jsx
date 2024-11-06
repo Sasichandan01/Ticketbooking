@@ -21,7 +21,7 @@ export default function Ticket() {
   return (
     <>
       <div className="toast-container">
-        {newuser === 0 && (
+        {newuser === 1 && (
           <div
             id="welcomeToast"
             className="toast align-items-center text-bg-primary border-0"
@@ -44,7 +44,7 @@ export default function Ticket() {
             </div>
           </div>
         )}
-        {newuser === 1 && (
+        {newuser === 0 && (
           <div
             id="welcomeToast"
             className="toast align-items-center text-bg-primary border-0"
