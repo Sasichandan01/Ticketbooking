@@ -219,7 +219,7 @@ function PreviousBookings() {
                       </MDBModalContent>
                     </MDBModalDialog>
                   </MDBModal>
-                  {compareDates1(today, data.date) === 1 && (
+                  {compareDates1(today, data.date) === 0 && (
                     <button
                       className="deleteticket"
                       id={data._id}
@@ -293,7 +293,7 @@ function PreviousBookings() {
                       </MDBModalContent>
                     </MDBModalDialog>
                   </MDBModal>
-                  {compareDates1(today, data.date) === 0 && (
+                  {compareDates1(today, data.date) === 1 && (
                     <button
                       className="rateticket"
                       id={data._id}
