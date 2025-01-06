@@ -22,7 +22,10 @@ function PreviousBookings() {
   const localhost = process.env.REACT_APP_LOCALHOST2;
   const backend = process.env.REACT_APP_BACKEND2;
   const today = moment().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-  const [review, setreview] = useState("Review: ");
+  const [review, setreview] = useState("");
+  const [Story, setstory] = useState("");
+  const [Direction, setdirection] = useState("");
+  const [Music, setMusic] = useState("");
   const [users, setUsers] = useState([]);
   const [centredModal, setCentredModal] = useState({ id: "", open: false });
   const [centredModal1, setCentredModal1] = useState({ id: "", open: false });
@@ -56,14 +59,17 @@ function PreviousBookings() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ movieId, review }), // Ensure review is an object
+          body: JSON.stringify({ movieId, Story,Direction,Music }), // Ensure review is an object
         }
       );
 
       if (response.ok) {
         setreview("Review Submitted Successfully 🎉🎉");
         setTimeout(() => {
-          setreview("Review: ");
+          setreview(" ");
+          setstory("");
+          setdirection("");
+          setMusic("");
           setCentredModal((prevState) => ({
             ...prevState,
             open: 0,
@@ -98,7 +104,7 @@ function PreviousBookings() {
           settext("If yes, Payment is processed in 24 hours");
         }, 2000);
       } else {
-        console.log("Failed to delete movie");
+        console.log("Failed to cancel movie ticket,Retry in a while");
       }
     } catch (err) {
       console.log(err);
@@ -213,7 +219,7 @@ function PreviousBookings() {
                       </MDBModalContent>
                     </MDBModalDialog>
                   </MDBModal>
-                  {compareDates1(today, data.date) === 0 && (
+                  {compareDates1(today, data.date) === 1 && (
                     <button
                       className="deleteticket"
                       id={data._id}
@@ -237,19 +243,37 @@ function PreviousBookings() {
                       <MDBModalContent>
                         <MDBModalHeader>
                           <MDBModalTitle>
-                            Enter your opinion on the film
+                            Describe the below questions in 2 lines
                           </MDBModalTitle>
                         </MDBModalHeader>
                         <MDBModalBody>
+                          <p className="textarep">Story</p>
                           <textarea
                             className="textarea1"
-                            rows="6"
+                            rows="2"
                             cols="40"
-                            onChange={(e) => setreview(e.target.value)}
-                            value={review}
+                            onChange={(e) => setstory(e.target.value)}
+                            value={Story}
+                          ></textarea>
+                          <p className="textarep">Direction</p>
+                          <textarea
+                            className="textarea1"
+                            rows="2"
+                            cols="40"
+                            onChange={(e) => setdirection(e.target.value)}
+                            value={Direction}
+                          ></textarea>
+                          <p className="textarep">Muisc</p>
+                          <textarea
+                            className="textarea1"
+                            rows="2"
+                            cols="40"
+                            onChange={(e) => setMusic(e.target.value)}
+                            value={Music}
                           ></textarea>
                         </MDBModalBody>
                         <MDBModalFooter>
+                          <p>{review}</p>
                           <button
                             className="modalyes"
                             onClick={() =>
@@ -269,7 +293,7 @@ function PreviousBookings() {
                       </MDBModalContent>
                     </MDBModalDialog>
                   </MDBModal>
-                  {compareDates1(today, data.date) === 1 && (
+                  {compareDates1(today, data.date) === 0 && (
                     <button
                       className="rateticket"
                       id={data._id}
@@ -282,7 +306,7 @@ function PreviousBookings() {
                           style={{ color: "#f84464" }}
                         ></i>
                       </div>
-                      <p id={data._id}>&nbsp; Add Review</p>
+                      <p id={data._id}>&nbsp; Write Review</p>
                     </button>
                   )}
                 </div>

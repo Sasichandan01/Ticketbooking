@@ -7,6 +7,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
   const [newpassword, setnewPassword] = useState("");
   const [signup, setsignup] = useState(0);
   const [error, setError] = useState("");
@@ -93,6 +94,10 @@ function App() {
 
     if (password.length < 8) {
       setError("Password must contain atleast 8 characters");
+      return;
+    }
+    if(password!==cpassword){
+      setError("Password and confirm password must be same");
       return;
     }
 
@@ -376,7 +381,21 @@ function App() {
                     />
                   </div>
                 </div>
-
+                <div className="form-group">
+                  <div className="input-group">
+                    <span className="input-group-addon">
+                      <i className="fa fa-envelope"> </i>
+                    </span>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Confirm Password"
+                      name="password"
+                      onChange={(e) => setCPassword(e.target.value)}
+                      value={cpassword}
+                    />
+                  </div>
+                </div>
                 <div id="noaccount">
                   <div>
                     <p>Already have an account?</p>

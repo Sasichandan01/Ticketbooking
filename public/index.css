@@ -441,12 +441,16 @@ a {
   text-transform: uppercase;
   background-color: #1abc9c;
 }
+.textarep{
+  margin-bottom: 0px !important;
+}
 .textarea1 {
   display: flex;
   columns: 50;
-  margin: 50px auto;
+  margin: 10px auto;
   border: 1px solid black;
 }
+
 /* Home Page */
 
 .latestmovies {
